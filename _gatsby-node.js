@@ -1,9 +1,6 @@
 const _ = require('lodash');
 const path = require('path');
-const fs = require('fs');
-
 const { createFilePath } = require('gatsby-source-filesystem');
-const { introspectionQuery, graphql } = require('gatsby/graphql');
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -39,8 +36,7 @@ exports.createPages = ({ actions, graphql }) => {
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
         component: path.resolve(
-          'src/templates/blog.jsx',
-          // `src/templates/${String(edge.node.frontmatter.templateKey)}.js`,
+          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`,
         ),
         // additional data can be passed via context
         context: {
@@ -49,7 +45,6 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
 
-    /*
     // Tag pages:
     let tags = [];
     // Iterate through each post, putting all found tags into `tags`
@@ -73,7 +68,6 @@ exports.createPages = ({ actions, graphql }) => {
         },
       });
     });
-    */
   });
 };
 
@@ -88,40 +82,4 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     });
   }
-};
-
-exports.onCreateWebpackConfig = ({
-  stage,
-  actions,
-}) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [
-        'src',
-        'node_modules',
-      ],
-    },
-  });
-  // If production JavaScript and CSS build
-  if (stage === 'build-javascript') {
-    // Turn off source maps
-    actions.setWebpackConfig({
-      devtool: false,
-    });
-  }
-};
-
-exports.onPostBootstrap = async ({ store }) => {
-  // try {
-  const { schema } = store.getState();
-
-  const data = await graphql(schema, introspectionQuery);
-
-  await fs.writeFile(
-    path.resolve(process.cwd(), `graphql.schema.json`),
-    JSON.stringify(data),
-  );
-  // } catch (error) {
-  //   return error
-  // }
 };
