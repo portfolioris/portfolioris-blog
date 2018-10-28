@@ -1,0 +1,143 @@
+/*  =========================================================================
+    vars
+    This file contains all global variables.
+    ========================================================================= */
+
+/*  =========================================================================
+    $OVERRIDES
+    Any variables you find set in Blocss that you do not wish to keep, simply
+    redefine here. This means that if Blocss sets your
+    `$blocss-base-font-size` at 16px and you wish it to be 14px, simply
+    redeclare that variable in this file.
+    ========================================================================= */
+
+$blocss-base-font-size: 16px;
+$blocss-base-line-height: 28px;
+
+
+
+/*  Responsive
+    Define your breakpoints. The first value is the appendix that shall be used
+    for your classes (e.g. `.classname@lap`), the second value is the media
+    query that the breakpoint fires at.
+    ========================================================================= */
+
+$lap: 580px;
+$desk: 980px;
+$wall: 1280px;
+
+$blocss-breakpoints: (
+  "palm": "(max-width: #{($lap - 1px) / $blocss-base-font-size * 1em})",
+  "lap": "(min-width: #{$lap / $blocss-base-font-size * 1em})",
+  "max-lap": "(max-width: #{($desk - 1) / $blocss-base-font-size * 1em})",
+  "desk": "(min-width: #{$desk / $blocss-base-font-size * 1em})",
+  "wall": "(min-width: #{$wall / $blocss-base-font-size * 1em})",
+) !default;
+
+$blocss-fractions: 12;
+$blocss-breakpoint-has-fractions: ("lap", "desk");
+$blocss-breakpoint-has-layout-fit: ("lap", "desk");
+$blocss-breakpoint-has-layout-fill: ("lap", "desk");
+$blocss-breakpoint-has-visually-hidden: ("palm", "max-lap", "lap", "desk");
+$blocss-breakpoint-has-hidden: ("palm", "max-lap", "lap", "desk");
+
+
+
+/*  =========================================================================
+    $CUSTOM
+    Place any of your own variables that sit on top of Blocss here.
+    Please use the `!default` flag because variables defined here can be
+    overwritten by the project
+    ========================================================================= */
+
+$font-family-primary: 'Open Sans', sans-serif !default;
+$font-family-secondary: 'Montserrat', sans-serif !default;
+
+
+
+/*  Colors
+    ========================================================================= */
+
+// Brand
+$green: #10ce1f;
+
+//$brand-primary-a: #226427 !default; // background colors
+//$brand-primary-b: #2d8f37 !default; // clickable elements
+//
+//$brand-secondary-a: #032264 !default;
+//$brand-secondary-b: #1faafc !default;
+//$brand-secondary-c: #1faafc !default; // primary filled button
+//$brand-secondary-d: #0d47c9 !default;
+//$brand-secondary-e: #0595fc !default;
+//
+//$red-dark: #a63318;
+//$red-light: #e82c00;
+//$orange-dark: #c96326;
+//$orange-light: #ff5f00;
+//$yellow-dark: #f0d03e;
+//$yellow-light: #f9dc58;
+//
+//// States
+//$state-error: #ba3311 !default;
+//$state-valid: #3ab048 !default;
+//$state-negative: $orange-light !default;
+//$state-yellow: $yellow-light !default;
+//// for Alert bar
+//$state-blue: #69bffe !default;
+//$state-green: #4fc165 !default;
+//$state-orange: #f7aa4c !default;
+//$state-red: #d85b00 !default;
+//
+//// Grayscale
+$black: #1a1918 !default;
+$white: #fff !default;
+$gray-light: #f1f1f1 !default;
+$gray-medium: #ccc !default;
+$gray-dark: #767676 !default;
+//$gray-dark: #9199a0 !default; // "steel gray" in Lexicon
+//$gray-medium: #e4e8ec !default; // "Sky gray" in Lexicon
+//$gray-light: #f8f9fa !default; // "Light gray" in Lexicon
+//$gray-a: #9199a0 !default;
+//$gray-b: #d5dadd !default;
+//$gray-c: #f1f2f4 !default;
+//$gray-d: #f8f9fa !default;
+
+
+
+/*  Sizes
+    ========================================================================= */
+
+$normalis: $blocss-base-font-size !default;
+$macro: 64px !default;
+$mega: 50px !default;
+$alpha: 34px !default;
+$beta: 32px !default;
+$gamma: 26px !default;
+$delta: 22px !default;
+$epsilon: 18px !default;
+$milli: 14px !default;
+$micro: 12px !default;
+
+
+
+/*  Animations
+    ========================================================================= */
+
+$base-timing-function: cubic-bezier(0.55, 0, 0.1, 1) !default; // Google swift bezier
+$base-transition-duration: 600ms !default;
+$base-transition-duration-short: 300ms !default;
+
+
+
+/*  Misc cosmetic
+    ========================================================================= */
+
+$border-radius--primary: 5px !default;
+
+
+
+/*  Global hover/active etc. states
+    ========================================================================= */
+
+$global-interaction-states: "&:hover, &:active, &:focus, &.is-active" !default;
+

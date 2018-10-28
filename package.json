@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "author": "Joris Hulsbosch",
   "dependencies": {
+    "blocss": "^7.0.0",
+    "classnames": "^2.2.6",
+    "dotenv": "^6.1.0",
     "gatsby": "^2.0.0",
     "gatsby-plugin-manifest": "^2.0.6",
     "gatsby-plugin-netlify": "^2.0.0",
@@ -14,8 +17,10 @@
     "gatsby-plugin-sharp": "^2.0.5",
     "gatsby-remark-images": "^2.0.1",
     "gatsby-source-filesystem": "^2.0.1",
+    "gatsby-source-graphql": "^2.0.4",
     "gatsby-transformer-remark": "^2.1.1",
     "gatsby-transformer-sharp": "^2.1.1",
+    "lazysizes": "^4.1.4",
     "lodash": "^4.17.5",
     "lodash-webpack-plugin": "^0.11.4",
     "netlify-cms": "^2.1.1",
@@ -25,6 +30,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
+    "react-markdown": "^4.0.3",
+    "svgxuse": "^1.2.6",
     "uuid": "^3.2.1"
   },
   "keywords": [
@@ -39,6 +46,7 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-alias": "^1.1.1",
     "gatsby-plugin-eslint": "^2.0.1",
     "gatsby-plugin-stylelint": "^2.0.0",
     "stylelint": "^9.6.0",

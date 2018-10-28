@@ -1,0 +1,76 @@
+@import "engine";
+
+/*  Module
+    ========================================================================= */
+
+.o-layer {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/*  Sizes
+    Padding on the bottom lacks the standard margin height elements have so
+    it will fill up just right
+    ========================================================================= */
+
+.o-layer--tiny {
+  padding: $blocss-space-tiny 0;
+}
+
+.o-layer--small {
+  padding: $blocss-space-small 0;
+}
+
+.o-layer--medium {
+  padding: $blocss-space 0 0 0;
+}
+
+.o-layer--large {
+  padding: $blocss-space 0 0 0;
+}
+
+.o-layer--huge {
+  padding: $blocss-space*2 0 $blocss-space 0;
+}
+
+.o-layer--flat {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+
+/*  Theming
+    ========================================================================= */
+
+.o-layer--white {
+  background-color: $white;
+}
+
+.o-layer--black {
+  background-color: $black;
+}
+
+
+
+/*  Responsive
+    ========================================================================= */
+
+@include blocss-media-query(desk) {
+  .o-layer--large {
+    @include blocss-rem(padding, $blocss-space*2 0 $blocss-space*1 0);
+  }
+
+  .o-layer--huge {
+    @include blocss-rem(padding, $blocss-space*4 0 $blocss-space*3 0);
+  }
+
+  .o-layer--collapse {
+    padding-top: 0;
+  }
+}

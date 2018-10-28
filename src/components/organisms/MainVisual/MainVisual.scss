@@ -1,0 +1,41 @@
+/*  =========================================================================
+    Foundation.Atoms.Button
+    ========================================================================= */
+
+/*  Imports
+    ========================================================================= */
+
+@import "engine";
+
+.c-main-visual {
+  margin: $blocss-space-tiny;
+}
+
+.c-main-visual__content {
+  position: relative;
+  z-index: 3;
+  margin-left: auto;
+  margin-right: auto;
+  //display: flex;
+  //flex-direction: row;
+  //align-items: center;
+  //justify-content: center;
+  padding-top: $blocss-space * 2;
+
+  @include blocss-media-query(lap) {
+    margin-top: $blocss-space * 3;
+    min-height: calc(460px - #{$blocss-space * 3});
+  }
+}
+
+.c-main-visual__content--large {
+  min-height: $blocss-space * 8;
+
+  @include blocss-media-query(lap) {
+    min-height: 560px;
+  }
+
+  @include blocss-media-query(desk) {
+    min-height: calc(100vh - #{$blocss-space-large * 4});
+  }
+}

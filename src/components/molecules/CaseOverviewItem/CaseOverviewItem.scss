@@ -1,0 +1,96 @@
+/*  =========================================================================
+    Case Overview Item
+    ========================================================================= */
+
+@import "engine";
+
+
+
+/*  Module
+    ========================================================================= */
+
+.c-case-overview-item {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 0 blocss-value-to-rem($blocss-space) transparentize($black, 0.8);
+    opacity: 0;
+    transition: opacity $base-transition-duration $base-timing-function;
+  }
+}
+
+
+.c-case-overview-item__image {
+  height: $blocss-space * 6;
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform $base-transition-duration $base-timing-function;
+    transform: scale(1.1);
+  }
+}
+
+
+
+.c-case-overview-item__logo {
+  height: $blocss-space * 3;
+  margin-top: -$blocss-space * 1.5;
+  background-color: $white;
+  padding: $blocss-space-tiny;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transition: transform $base-transition-duration $base-timing-function;
+
+  img {
+    display: inline-block;
+    height: 100%;
+    width: auto;
+  }
+}
+
+.c-case-overview-item.is-link {
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    .c-case-overview-item__image {
+      img {
+        transform: scale(1);
+      }
+    }
+
+    .c-case-overview-item__logo {
+      transform: scale(1.1);
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.c-case-overview-item--cta {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.c-case-overview-item__content {
+  order: 1;
+}

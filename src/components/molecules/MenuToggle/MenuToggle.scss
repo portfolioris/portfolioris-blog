@@ -1,0 +1,46 @@
+@import "engine";
+
+.c-menu-toggle {
+  padding: $blocss-space-tiny;
+  width: 42px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+  line-height: 1;
+
+  &.is-open {
+    text-decoration: none;
+
+    .c-menu-toggle__dash--middle {
+      transform: scaleX(0);
+    }
+
+    .c-menu-toggle__dash--top {
+      transform: translate(-4.5px, 4.5px) rotate(45deg);
+    }
+
+    .c-menu-toggle__dash--bottom {
+      transform: translate(-4.5px, -4.5px) rotate(-45deg);
+    }
+  }
+
+  #{$global-interaction-states} {
+    color: $white;
+  }
+}
+
+.c-menu-toggle__icon {
+  overflow: visible;
+}
+
+.c-menu-toggle__dash {
+  transition: transform $base-transition-duration $base-timing-function;
+  transform-origin: center;
+}
+
+.c-menu-toggle__label {
+  @include blocss-font-size(10px, false);
+
+  display: block;
+}

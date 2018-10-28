@@ -1,0 +1,43 @@
+/*  =========================================================================
+    Header
+    Main navigation
+    ========================================================================= */
+
+@import "engine";
+
+
+
+/*  Module
+    ========================================================================= */
+
+.c-header {
+  @include blocss-rem(margin, $blocss-space-small);
+}
+
+.c-header__logo-link {
+  color: $black;
+  transition: color $base-transition-duration $base-timing-function;
+
+  #{$global-interaction-states} {
+    color: $green;
+  }
+}
+
+.c-header__logo {
+  margin-right: $blocss-space-small;
+  width: $blocss-space * 1.5;
+  height: $blocss-space * 1.5;
+  display: block;
+}
+
+
+
+/*  Responsive
+    ========================================================================= */
+
+@include blocss-media-query(lap) {
+  .c-header__logo {
+    width: $blocss-space * 3;
+    height: $blocss-space * 3;
+  }
+}

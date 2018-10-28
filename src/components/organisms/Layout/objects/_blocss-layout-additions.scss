@@ -1,0 +1,77 @@
+/*  =========================================================================
+    foundation.objects.blocss-layout-additions
+    ========================================================================= */
+
+
+
+/*  Responsive
+    Only regular gutter @lap
+    ========================================================================= */
+
+@include blocss-media-query(lap) {
+  .o-layout--gutter\@lap {
+    @include blocss-rem(margin-left, -$blocss-layout-gutter);
+
+    > .o-layout__cell {
+      @include blocss-rem(padding-left, $blocss-layout-gutter);
+    }
+  }
+}
+
+
+
+.o-layout--direction-column {
+  flex-flow: column;
+
+  > .o-layout__cell--fill {
+    flex: 1 1 auto;
+  }
+}
+
+
+.o-layout--inline {
+  display: inline-flex;
+  vertical-align: top;
+
+  .u-text-center & {
+    justify-content: center;
+  }
+}
+
+
+.o-layout--nowrap {
+  flex-wrap: nowrap;
+}
+
+@include blocss-media-query(desk) {
+  .o-layout--nowrap#{$blocss-responsive-modifier}desk {
+    flex-wrap: nowrap;
+  }
+}
+
+.o-layout--align-baseline {
+  align-items: baseline;
+}
+
+
+.o-layout--vertical-equal {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+
+.o-layout--distribute-content {
+  justify-content: space-between;
+}
+
+.o-layout__cell--align-bottom {
+  align-self: flex-end;
+}
+
+.o-layout__cell--noshrink {
+  flex-shrink: 0;
+}
+
+.o-layout__cell--right {
+  margin-left: auto;
+}

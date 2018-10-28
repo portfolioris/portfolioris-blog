@@ -1,0 +1,104 @@
+/*  =========================================================================
+    foundation.atoms.heading
+    ========================================================================= */
+
+/*  Imports
+    ========================================================================= */
+
+@import "engine";
+
+
+
+/*  Headings
+    ========================================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  //.u-heading {
+  font-family: $font-family-secondary;
+  line-height: 0.9;
+  font-weight: bold;
+  margin-bottom: $blocss-space-small;
+
+  a {
+    color: $black;
+    transition: color $base-transition-duration-short linear;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $green;
+    }
+  }
+
+  b,
+  strong {
+    color: $green;
+  }
+}
+
+//h1,
+//h2,
+//h3,
+//h4,
+//h5,
+//h6 {
+//  @extend .u-heading;
+//}
+
+
+
+/*  Element based sizings
+    ========================================================================= */
+
+h1 {
+  @include blocss-font-size($beta, false);
+
+  @include blocss-media-query (lap) {
+    @include blocss-font-size($alpha, false);
+  }
+}
+
+h2 {
+  @include blocss-font-size($gamma, false);
+
+  @include blocss-media-query (lap) {
+    @include blocss-font-size($beta, false);
+  }
+}
+
+h3 {
+  @include blocss-font-size($delta, false);
+
+  @include blocss-media-query (lap) {
+    @include blocss-font-size($gamma, false);
+  }
+}
+
+h4 {
+  @include blocss-font-size($epsilon, false);
+
+  @include blocss-media-query (lap) {
+    @include blocss-font-size($delta, false);
+  }
+}
+
+h5 {
+  @include blocss-font-size($epsilon, false);
+}
+
+h6 {
+  @include blocss-font-size($normalis, false);
+}
+
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  line-height: 0.9;
+  font-weight: bold;
+}

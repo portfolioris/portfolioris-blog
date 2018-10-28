@@ -1,11 +1,35 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + Netlify CMS Starter',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
     {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        includePaths: [
+          'src/sass',
+          'node_modules',
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'craft',
+        fieldName: 'craft',
+        url: `${process.env.CRAFT_API_URL}`,
+        headers: {
+          authorization: `${process.env.CRAFT_API_TOKEN}`,
+        },
+        refetchInterval: 60,
+      },
+    },
+    /*{
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/content`,
@@ -18,7 +42,7 @@ module.exports = {
         path: `${__dirname}/src/img`,
         name: 'images',
       },
-    },
+    },*/
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -27,12 +51,12 @@ module.exports = {
         plugins: [],
       },
     },
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
+    // {
+    //   resolve: 'gatsby-plugin-netlify-cms',
       // options: {
       //   modulePath: `${__dirname}/src/cms/cms.js`,
       // },
-    },
+    // },
     'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-stylelint',
