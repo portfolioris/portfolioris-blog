@@ -1,8 +1,6 @@
-const _ = require('lodash');
 const path = require('path');
 const fs = require('fs');
 
-const { createFilePath } = require('gatsby-source-filesystem');
 const { introspectionQuery, graphql } = require('gatsby/graphql');
 
 exports.createPages = ({ actions, graphql }) => {
@@ -12,28 +10,22 @@ exports.createPages = ({ actions, graphql }) => {
     {
       craft {
         entries {
-          ... on craft_Blog {
-            id
-            uri
+          uri
+          section {
+            handle
           }
         }
       }
     }
   `)
     .then((result) => {
-      // if (result.errors) {
-      //   result.errors.forEach(e => console.error(e.toString()));
-      //   return Promise.reject(result.errors);
-      // }
+      const pages = result.data.craft.entries;
 
-      const posts = result.data.craft.entries;
-
-      posts.forEach((entry) => {
-        // const id = edge.node.id;
+      pages.forEach((entry) => {
         createPage({
           path: entry.uri,
           component: path.resolve(
-            'src/templates/blog.jsx',
+            `src/templates/${entry.section.handle}.jsx`,
             // `src/templates/${String(edge.node.frontmatter.templateKey)}.js`,
           ),
           // additional data can be passed via context
