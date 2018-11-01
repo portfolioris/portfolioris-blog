@@ -11,20 +11,22 @@ const Footer = () => (
         <div className="u-milli">
           <div className="o-layout  o-layout--gutter-small">
             <div className="o-layout__cell  o-layout__cell--fit">
-              <Rte richText="© Colours 2018" className="u-mb-flatten" />
+              <Rte richText="© Portfolioris 2018" className="u-mb-flatten" />
             </div>
+            {/*
             <div className="o-layout__cell  o-layout__cell--fit">
               <ul className="o-layout  o-layout--gutter-small  u-mb-flatten">
-                {/* {items.map(item => ( */}
+                {items.map(item => (
                 <li
                   // key={item.ID}
                   className="o-layout__cell  o-layout__cell--fit"
                 >
                   <a href="#_">Link?</a>
                 </li>
-                {/* ))} */}
+                ))}
               </ul>
             </div>
+             */}
           </div>
         </div>
       </Retain>

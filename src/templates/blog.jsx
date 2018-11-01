@@ -8,6 +8,7 @@ import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Helmet from 'react-helmet';
 import CodeBlock from 'components/atoms/text/CodeBlock';
+import ImageBlock from 'components/atoms/text/ImageBlock';
 
 const blog = ({ data }) => {
   const { craft: { entry } } = data;
@@ -23,6 +24,7 @@ const blog = ({ data }) => {
               source={entry.markdown}
               renderers={{
                 code: CodeBlock,
+                image: ImageBlock,
               }}
             />
           </Retain>
