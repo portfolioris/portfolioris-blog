@@ -29,34 +29,8 @@ module.exports = {
         refetchInterval: 60,
       },
     },
-    /*{
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/content`,
-        name: 'pages',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/img`,
-        name: 'images',
-      },
-    },*/
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [],
-      },
-    },
-    // {
-    //   resolve: 'gatsby-plugin-netlify-cms',
-      // options: {
-      //   modulePath: `${__dirname}/src/cms/cms.js`,
-      // },
-    // },
     'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-stylelint',
@@ -73,7 +47,7 @@ module.exports = {
         background_color: '#1a1918',
         theme_color: '#10ce1f',
         display: 'minimal-ui',
-        icon: 'src/img/logo.svg', // This path is relative to the root of the site.
+        icon: 'src/img/favicon.svg', // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-offline',

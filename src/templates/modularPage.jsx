@@ -3,6 +3,7 @@ import Layout from 'components/organisms/Layout';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import ArticleOverview from 'components/organisms/ArticleOverview';
 
 const blog = ({ data }) => {
   const { craft: { entry } } = data;
@@ -11,7 +12,7 @@ const blog = ({ data }) => {
     <Fragment>
       <Helmet title={`${entry.title} | Modp`} />
       <Layout>
-        modules here
+        <ArticleOverview />
       </Layout>
     </Fragment>
   );

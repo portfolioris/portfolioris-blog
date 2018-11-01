@@ -11,10 +11,12 @@
     ========================================================================= */
 
 .c-header {
-  @include blocss-rem(margin, $blocss-space-small);
+  pointer-events: none;
+  margin: $blocss-space-small;
 }
 
 .c-header__logo-link {
+  pointer-events: auto;
   color: $black;
   transition: color $base-transition-duration $base-timing-function;
 
@@ -24,6 +26,7 @@
 }
 
 .c-header__logo {
+  pointer-events: auto;
   margin-right: $blocss-space-small;
   width: $blocss-space * 1.5;
   height: $blocss-space * 1.5;

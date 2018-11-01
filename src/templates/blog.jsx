@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Helmet from 'react-helmet';
+import CodeBlock from 'components/atoms/text/CodeBlock';
 
 const blog = ({ data }) => {
   const { craft: { entry } } = data;
@@ -18,7 +19,12 @@ const blog = ({ data }) => {
         <MainVisual heading={entry.title} />
         <Layer>
           <Retain size="narrow">
-            <ReactMarkdown source={entry.markdown} />
+            <ReactMarkdown
+              source={entry.markdown}
+              renderers={{
+                code: CodeBlock,
+              }}
+            />
           </Retain>
         </Layer>
       </Layout>

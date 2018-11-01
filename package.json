@@ -10,20 +10,16 @@
     "gatsby": "^2.0.0",
     "gatsby-plugin-manifest": "^2.0.6",
     "gatsby-plugin-netlify": "^2.0.0",
-    "gatsby-plugin-netlify-cms": "^3.0.0",
     "gatsby-plugin-offline": "^2.0.9",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sass": "^2.0.1",
     "gatsby-plugin-sharp": "^2.0.5",
     "gatsby-remark-images": "^2.0.1",
-    "gatsby-source-filesystem": "^2.0.1",
     "gatsby-source-graphql": "^2.0.4",
-    "gatsby-transformer-remark": "^2.1.1",
     "gatsby-transformer-sharp": "^2.1.1",
     "lazysizes": "^4.1.4",
     "lodash": "^4.17.5",
     "lodash-webpack-plugin": "^0.11.4",
-    "netlify-cms": "^2.1.1",
     "node-sass": "^4.9.2",
     "parcel-bundler": "^1.9.4",
     "prop-types": "^15.6.0",
@@ -31,8 +27,8 @@
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.3",
-    "svgxuse": "^1.2.6",
-    "uuid": "^3.2.1"
+    "react-syntax-highlighter": "^10.0.0",
+    "svgxuse": "^1.2.6"
   },
   "keywords": [
     "gatsby"
