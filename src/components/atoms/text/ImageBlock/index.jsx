@@ -1,8 +1,16 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
-import 'lazysizes';
-import 'lazysizes/plugins/rias/ls.rias';
+
+try {
+  // eslint-disable-next-line global-require
+  require('lazysizes');
+  // eslint-disable-next-line global-require
+  require('lazysizes/plugins/rias/ls.rias');
+} catch (e) {
+  //
+}
+
 
 const ImageBlock = props => (
   <StaticQuery

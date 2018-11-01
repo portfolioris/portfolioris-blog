@@ -19,11 +19,19 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `)
     .then((result) => {
+
+      console.log(result);
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()));
+        return Promise.reject(result.errors);
+      }
+
       const pages = result.data.craft.entries;
 
       pages.forEach((entry) => {
         createPage({
-          path: entry.uri === '__home__' ? '/' : entry.uri,
+          path: entry.uri,
+          // path: entry.uri === '__home__' ? '/' : entry.uri,
           component: path.resolve(
             `src/templates/${entry.section.handle}.jsx`,
           ),
