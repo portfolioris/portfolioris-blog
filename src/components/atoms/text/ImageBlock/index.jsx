@@ -29,7 +29,12 @@ const ImageBlock = props => (
       }
     `}
     render={({ craft }) => {
-      const imgId = parseInt(props.src.slice(7).slice(0, -1), 10);
+      const imgId = parseInt(
+        props.src
+          .replace('{asset:', '')
+          .replace('}', ''),
+        10,
+      );
       const Img = craft.assets.find(asset => asset.id === imgId);
       return (
         <img

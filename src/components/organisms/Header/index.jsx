@@ -33,8 +33,8 @@ const Header = ({
                     href="/"
                     className="c-header__logo-link"
                   >
-                    <Icon icon="logo-colours" className="c-header__logo" />
-                    <span className="u-visually-hidden">Colours</span>
+                    <Icon icon="logo--portfolioris" className="c-header__logo" />
+                    <span className="u-visually-hidden">Portfolioris</span>
                   </Link>
                 </div>
                 <div className="o-layout__cell  o-layout__cell--fit  o-layout__cell--center">

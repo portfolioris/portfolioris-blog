@@ -1,15 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import 'svgxuse';
 
 // Import all the svg's
-import './svgs/logo-colours.svg';
+import Logo from './svgs/logo--portfolioris.svg';
 import './svgs/icon-arrow-right.svg';
+
 
 // Styles
 import './Icon.scss';
 
+const foo = {
+  'logo--portfolioris': Logo,
+};
+
+const Icon = ({ icon }) => (
+  React.createElement(
+    foo[icon],
+    {
+      className: 'c-icon',
+    },
+  )
+);
+/*
 const Icon = ({ icon, className, size }) => (
   <svg
     className={classNames(`c-icon ${className}`, {
@@ -24,21 +38,22 @@ const Icon = ({ icon, className, size }) => (
     role="presentation"
     aria-hidden="true"
   >
-    {/* <use xlinkHref={`/static/colours.icons.svg#${icon}`} /> */}
+    {/!* <use xlinkHref={`/static/colours.icons.svg#${icon}`} /> *!/}
     <use xlinkHref={`#${icon}`} />
   </svg>
 );
+*/
 
 Icon.propTypes = {
   icon: PropTypes.string,
-  className: PropTypes.string,
-  size: PropTypes.string,
+  // className: PropTypes.string,
+  // size: PropTypes.string,
 };
 
 Icon.defaultProps = {
   icon: 'icon-arrow-right',
-  className: '',
-  size: '',
+  // className: '',
+  // size: '',
 };
 
 export default Icon;

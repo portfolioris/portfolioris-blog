@@ -29,8 +29,8 @@ module.exports = {
         refetchInterval: 60,
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
+    // 'gatsby-plugin-sharp',
+    // 'gatsby-transformer-sharp',
     'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-stylelint',

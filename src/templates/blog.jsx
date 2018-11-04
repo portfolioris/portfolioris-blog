@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+
 import Layout from 'components/organisms/Layout';
 import MainVisual from 'components/organisms/MainVisual';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
-import Helmet from 'react-helmet';
-import CodeBlock from 'components/atoms/text/CodeBlock';
-import ImageBlock from 'components/atoms/text/ImageBlock';
+import Rte from 'components/atoms/text/Rte';
 
 const blog = ({ data }) => {
   const { craft: { entry } } = data;
@@ -17,16 +16,13 @@ const blog = ({ data }) => {
     <Fragment>
       <Helmet title={`${entry.title} | Blog`} />
       <Layout>
-        <MainVisual heading={entry.title} />
+        <MainVisual
+          heading={entry.title}
+          subheading={entry.subheading}
+        />
         <Layer>
           <Retain size="narrow">
-            <ReactMarkdown
-              source={entry.markdown}
-              renderers={{
-                code: CodeBlock,
-                image: ImageBlock,
-              }}
-            />
+            <Rte richText={entry.richText} />
           </Retain>
         </Layer>
       </Layout>
@@ -45,15 +41,16 @@ blog.defaultProps = {
 export default blog;
 
 export const pageQuery = graphql`
-    query BlogPost($uri: String!) {
-        craft {
-            entry(uri: $uri) {
-                title
-                ... on craft_Blog {
-                    title
-                    markdown
-                }
-            }
+  query BlogPost($uri: String!) {
+    craft {
+      entry(uri: $uri) {
+        title
+        ... on craft_Blog {
+          title
+          subheading
+          richText
         }
+      }
     }
+  }
 `;

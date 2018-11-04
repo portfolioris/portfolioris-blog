@@ -1,0 +1,23 @@
+{
+  "name": "gatsby-plugin-svg-sprite",
+  "version": "1.0.0",
+  "description": "svg-sprite plugin for Gatsby",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcobiedermann/gatsby-plugin-svg-sprite.git"
+  },
+  "keywords": ["gatsby-plugin", "gatsby", "svg", "sprite"],
+  "author": "Marco Biedermann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcobiedermann/gatsby-plugin-svg-sprite/issues"
+  },
+  "homepage": "https://github.com/marcobiedermann/gatsby-plugin-svg-sprite#readme",
+  "dependencies": {
+    "svg-sprite-loader": "^3.6.2"
+  }
+}

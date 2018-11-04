@@ -19,8 +19,6 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `)
     .then((result) => {
-
-      console.log(result);
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()));
         return Promise.reject(result.errors);
@@ -30,8 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       pages.forEach((entry) => {
         createPage({
-          path: entry.uri,
-          // path: entry.uri === '__home__' ? '/' : entry.uri,
+          path: entry.uri === '__home__' ? '/' : entry.uri,
           component: path.resolve(
             `src/templates/${entry.section.handle}.jsx`,
           ),
