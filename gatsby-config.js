@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const pxtorem = require('postcss-pxtorem');
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + Netlify CMS Starter',
@@ -15,6 +17,10 @@ module.exports = {
           'src/sass',
           'node_modules',
         ],
+        postCssPlugins: [pxtorem({
+          propList: ['*'],
+          minPixelValue: 4,
+        })],
       },
     },
     {
@@ -31,6 +37,7 @@ module.exports = {
     },
     // 'gatsby-plugin-sharp',
     // 'gatsby-transformer-sharp',
+    'gatsby-plugin-postcss',
     'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-stylelint',

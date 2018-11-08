@@ -37,17 +37,18 @@ const ImageBlock = props => (
       );
       const Img = craft.assets.find(asset => asset.id === imgId);
       return (
-        <img
-          style={{
-            width: '100%',
-          }}
-          data-foo={Img.filename}
-          data-sizes="auto"
-          className="lazyload"
-          // data-src="http://placehold.it/{width}"
-          data-src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${Img.folder.path}${Img.filename}`}
-          alt=""
-        />
+        <figure className="c-rte__figure">
+          <img
+            style={{
+              width: '100%',
+            }}
+            data-sizes="auto"
+            className="lazyload  c-rte__img"
+            data-src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${Img.folder.path}${Img.filename}`}
+            alt={Img.title}
+          />
+          <figcaption className="c-rte__figcaption">{props.alt}</figcaption>
+        </figure>
       );
     }}
   />
@@ -55,11 +56,13 @@ const ImageBlock = props => (
 
 ImageBlock.propTypes = {
   src: PropTypes.string,
+  alt: PropTypes.string,
   // language: PropTypes.string,
   // value: PropTypes.string,
 };
 ImageBlock.defaultProps = {
   src: null,
+  alt: null,
   // language: null,
   // value: null,
 };
