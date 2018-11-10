@@ -4,11 +4,11 @@ import classNames from 'classnames';
 // import { graphql } from 'gatsby';
 
 import Button from 'components/atoms/Button';
-import Rte from 'components/atoms/text/Rte';
 import BackgroundVisual from 'components/molecules/BackgroundVisual';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Heading from 'components/atoms/text/Heading';
+import Text from 'components/atoms/text/Text';
 
 import './MainVisual.scss';
 
@@ -54,7 +54,7 @@ class MainVisual extends Component {
                 <Retain size="narrow">
                   <div className="u-text-center">
                     <Heading level={1} className="u-macro" text={heading} />
-                    <Rte richText={subheading} className="u-epsilon" />
+                    <Text text={subheading} modifier="intro" />
                     {link ? (
                       <p>
                         <Button

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
-import Rte from 'components/atoms/text/Rte';
+import Text from 'components/atoms/text/Text';
 
 const Footer = () => (
   <footer>
@@ -11,7 +11,7 @@ const Footer = () => (
         <div className="u-milli">
           <div className="o-layout  o-layout--gutter-small">
             <div className="o-layout__cell  o-layout__cell--fit">
-              <Rte richText="© Portfolioris 2018" className="u-mb-flatten" />
+              <Text richText="© Portfolioris 2018" className="u-mb-flatten" />
             </div>
             {/*
             <div className="o-layout__cell  o-layout__cell--fit">

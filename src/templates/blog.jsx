@@ -7,7 +7,7 @@ import Layout from 'components/organisms/Layout';
 import MainVisual from 'components/organisms/MainVisual';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
-import Rte from 'components/atoms/text/Rte';
+import Text from 'components/atoms/text/Text';
 
 const blog = ({ data }) => {
   const { craft: { entry } } = data;
@@ -22,7 +22,10 @@ const blog = ({ data }) => {
         />
         <Layer>
           <Retain size="narrow">
-            <Rte richText={entry.richText} />
+            <Text
+              text={entry.richText}
+              type="md"
+            />
           </Retain>
         </Layer>
       </Layout>

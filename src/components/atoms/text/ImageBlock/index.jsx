@@ -37,7 +37,7 @@ const ImageBlock = props => (
       );
       const Img = craft.assets.find(asset => asset.id === imgId);
       return (
-        <figure className="c-rte__figure">
+        <figure className="c-text__figure">
           <img
             style={{
               width: '100%',
@@ -47,7 +47,7 @@ const ImageBlock = props => (
             data-src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${Img.folder.path}${Img.filename}`}
             alt={Img.title}
           />
-          <figcaption className="c-rte__figcaption">{props.alt}</figcaption>
+          <figcaption className="u-bold  u-milli  u-italic">{props.alt}</figcaption>
         </figure>
       );
     }}
