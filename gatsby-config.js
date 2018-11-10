@@ -58,7 +58,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    /*
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
@@ -80,6 +79,5 @@ module.exports = {
         // generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
       },
     },
-    */
   ],
 };
