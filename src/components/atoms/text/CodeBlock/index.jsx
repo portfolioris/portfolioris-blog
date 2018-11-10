@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import SyntaxHighlighter from 'react-syntax-highlighter';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/languages/hljs/javascript';
 import css from 'react-syntax-highlighter/dist/languages/hljs/css';
