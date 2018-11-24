@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import js from 'react-syntax-highlighter/dist/languages/hljs/javascript';
-import css from 'react-syntax-highlighter/dist/languages/hljs/css';
-import github from 'react-syntax-highlighter/dist/styles/hljs/github';
+import js from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript';
+import css from 'react-syntax-highlighter/dist/cjs/languages/hljs/css';
+import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('css', css);

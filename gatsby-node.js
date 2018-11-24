@@ -42,9 +42,9 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 exports.onCreateWebpackConfig = ({
-  stage,
-  actions,
-}) => {
+                                   stage,
+                                   actions,
+                                 }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [
@@ -68,5 +68,8 @@ exports.onPostBootstrap = async ({ store }) => {
   await fs.writeFile(
     path.resolve(process.cwd(), 'graphql.schema.json'),
     JSON.stringify(data),
+    (err) => {
+      if (err) throw err;
+    },
   );
 };

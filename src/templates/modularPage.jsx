@@ -6,11 +6,11 @@ import Helmet from 'react-helmet';
 import ArticleOverview from 'components/organisms/ArticleOverview';
 
 const blog = ({ data }) => {
-  const { craft: { entry } } = data;
+  const { craft: { entry, globals } } = data;
 
   return (
     <Fragment>
-      <Helmet title={`${entry.title} | Modp`} />
+      <Helmet title={`${entry.title} | ${globals.settings.siteName}`} />
       <Layout>
         <ArticleOverview />
       </Layout>
@@ -33,6 +33,11 @@ export const pageQuery = graphql`
         craft {
             entry(uri: $uri) {
                 title
+            }
+            globals {
+                settings {
+                    siteName
+                }
             }
         }
     }

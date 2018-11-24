@@ -10,11 +10,11 @@ import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 
 const blog = ({ data }) => {
-  const { craft: { entry } } = data;
+  const { craft: { entry, globals } } = data;
 
   return (
     <Fragment>
-      <Helmet title={`${entry.title} | Blog`} />
+      <Helmet title={`${entry.title} | ${globals.settings.siteName}`} />
       <Layout>
         <MainVisual
           heading={entry.title}
@@ -52,6 +52,11 @@ export const pageQuery = graphql`
           title
           subheading
           richText
+        }
+      }
+      globals {
+        settings {
+          siteName
         }
       }
     }
