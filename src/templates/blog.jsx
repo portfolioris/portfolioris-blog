@@ -10,8 +10,6 @@ import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 
 const blog = (props) => {
-  console.log(props);
-
   const {
     data: {
       craft: {
@@ -21,8 +19,6 @@ const blog = (props) => {
     },
     location,
   } = props;
-
-  console.log(location.href);
 
   return (
     <Fragment>
@@ -91,6 +87,7 @@ export const pageQuery = graphql`
           description
           mainImage {
             filename
+            title
             folder {
               path
             }

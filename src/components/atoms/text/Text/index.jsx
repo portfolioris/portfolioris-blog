@@ -19,10 +19,10 @@ const Text = ({
         'u-epsilon  c-rte--intro': modifier === 'intro',
       }),
       source: type === 'md' ? text : null,
-      renderers: {
+      renderers: type === 'md' ? {
         code: CodeBlock,
         image: ImageBlock,
-      },
+      } : null,
     },
     type === 'md' ? null : text,
   )

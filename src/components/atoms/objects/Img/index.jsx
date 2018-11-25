@@ -41,7 +41,7 @@ const Img = ({
         className={`lazyload  c-img  ${className}`}
         data-src={lazyload ? image.src : null}
         src={!lazyload ? `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${image.folder.path}${image.filename}` : 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='}
-        alt={image.alt}
+        alt={image.title}
       />
     </picture>
   );
