@@ -39,12 +39,10 @@ const ImageBlock = props => (
       return (
         <figure className="c-text__figure">
           <img
-            style={{
-              width: '100%',
-            }}
             data-sizes="auto"
             className="lazyload  c-rte__img"
             data-src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${Img.folder.path}${Img.filename}`}
+            src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_100/${Img.folder.path}${Img.filename}`}
             alt={Img.title}
           />
           <figcaption className="u-bold  u-milli  u-italic">{props.alt}</figcaption>
