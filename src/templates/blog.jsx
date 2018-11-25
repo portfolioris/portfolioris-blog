@@ -38,6 +38,14 @@ const blog = (props) => {
         <meta property="og:locale" content="nl_NL" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@portfolioris" />
+        <meta name="twitter:creator" content="@portfolioris" />
+        <meta name="twitter:url" content={location.href} />
+        <meta name="twitter:title" content={entry.title} />
+        <meta name="twitter:description" content={entry.description} />
+        <meta name="twitter:image" content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1920/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`} />
       </Helmet>
       <Layout>
         <MainVisual
