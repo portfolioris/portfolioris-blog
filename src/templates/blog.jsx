@@ -22,6 +22,7 @@ const blog = (props) => {
     location,
   } = props;
 
+  console.log(location.href);
 
   return (
     <Fragment>
@@ -30,7 +31,7 @@ const blog = (props) => {
         <meta name="description" content={entry.description} />
 
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={location.href} />
+        <meta property="og:url" content={`${location.href}`} />
         <meta property="og:title" content={entry.title} />
         <meta property="og:image" content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`} />
         <meta property="og:description" content={entry.description} />
