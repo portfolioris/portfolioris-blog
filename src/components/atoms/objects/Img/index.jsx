@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 
 try {
   require('lazysizes'); // eslint-disable-line global-require
+  require('lazysizes/plugins/rias/ls.rias'); // eslint-disable-line global-require
 } catch (x) {
   // lazysizes = null;
 }
@@ -28,35 +28,19 @@ const Img = ({
   return (
     <picture>
       <source
-        data-srcset={image.sizes ? (
-          image.sizes.map(size => (
-            `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_${size}/${image.name} ${size}w`
-          ))
-        ) : null}
-        srcSet={!lazyload && image.sizes ? (
-          image.sizes.map(size => (
-            `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_${size}/${image.name} ${size}w`
-          ))
-        ) : ''}
+        data-srcset={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${image.folder.path}${image.filename}`}
+        srcSet={!lazyload ? `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${image.folder.path}${image.filename}` : null}
         media="(min-width: 60em)"
       />
       <source
-        data-srcset={useSmallImage.sizes ? (
-          useSmallImage.sizes.map(size => (
-            `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_${size}/${useSmallImage.name} ${size}w`
-          ))
-        ) : null}
-        srcSet={!lazyload && useSmallImage.sizes ? (
-          useSmallImage.sizes.map(size => (
-            `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_${size}/${useSmallImage.name} ${size}w`
-          ))
-        ) : ''}
+        data-srcset={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${useSmallImage.name}`}
+        srcSet={!lazyload ? `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${useSmallImage.name}` : null}
       />
       <img
         data-sizes="auto"
         className={`lazyload  c-img  ${className}`}
         data-src={lazyload ? image.src : null}
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        src={!lazyload ? `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${image.folder.path}${image.filename}` : 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='}
         alt={image.alt}
       />
     </picture>

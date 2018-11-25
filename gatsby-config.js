@@ -52,7 +52,7 @@ module.exports = {
         short_name: 'Portfolioris',
         start_url: '/',
         background_color: '#1a1918',
-        theme_color: '#10ce1f',
+        theme_color: '#3a8500',
         display: 'minimal-ui',
         icon: 'src/img/favicon.svg', // This path is relative to the root of the site.
       },

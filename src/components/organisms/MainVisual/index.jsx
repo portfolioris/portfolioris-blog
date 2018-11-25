@@ -36,14 +36,16 @@ class MainVisual extends Component {
         >
           <BackgroundVisual
             hasContent
-            image={{
-              ...image,
-              sizes: [750, 1536, 1920],
-            }}
-            smallImage={{
-              ...smallImage,
-              sizes: [750, 1536],
-            }}
+            image={image}
+            smallImage={smallImage}
+            // image={{
+            //   ...image,
+            //   sizes: [750, 1536, 1920],
+            // }}
+            // smallImage={{
+            //   ...smallImage,
+            //   sizes: [750, 1536],
+            // }}
           >
             <div
               className={classNames('c-main-visual__content', {

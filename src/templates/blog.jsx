@@ -9,16 +9,41 @@ import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 
-const blog = ({ data }) => {
-  const { craft: { entry, globals } } = data;
+const blog = (props) => {
+  console.log(props);
+
+  const {
+    data: {
+      craft: {
+        entry,
+        globals,
+      },
+    },
+    location,
+  } = props;
+
 
   return (
     <Fragment>
-      <Helmet title={`${entry.title} | ${globals.settings.siteName}`} />
+      <Helmet>
+        <title>{`${entry.title} | ${globals.settings.siteName}`}</title>
+        <meta name="description" content={entry.description} />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={location.href} />
+        <meta property="og:title" content={entry.title} />
+        <meta property="og:image" content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`} />
+        <meta property="og:description" content={entry.description} />
+        <meta property="og:site_name" content={globals.settings.siteName} />
+        <meta property="og:locale" content="nl_NL" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </Helmet>
       <Layout>
         <MainVisual
           heading={entry.title}
           subheading={entry.subheading}
+          image={entry.mainImage[0]}
         />
         <Layer>
           <Retain size="narrow">
@@ -35,10 +60,12 @@ const blog = ({ data }) => {
 
 blog.propTypes = {
   data: PropTypes.objectOf(PropTypes.any),
+  location: PropTypes.objectOf(PropTypes.any),
 };
 
 blog.defaultProps = {
   data: {},
+  location: {},
 };
 
 export default blog;
@@ -52,6 +79,13 @@ export const pageQuery = graphql`
           title
           subheading
           richText
+          description
+          mainImage {
+            filename
+            folder {
+              path
+            }
+          }
         }
       }
       globals {
