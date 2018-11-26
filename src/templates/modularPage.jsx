@@ -10,7 +10,7 @@ const blog = ({ data }) => {
 
   return (
     <Fragment>
-      <Helmet title={`${entry.title} | ${globals.settings.siteName}`} />
+      <Helmet todotitle={`todo: ${entry.title} | ${globals.settings.siteName}`} />
       <Layout>
         <ArticleOverview />
       </Layout>

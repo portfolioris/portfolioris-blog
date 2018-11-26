@@ -9,27 +9,27 @@ import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 
-const blog = (props) => {
+const blog = ({ data, location }) => {
   const {
-    data: {
-      craft: {
-        entry,
-        globals,
-      },
+    craft: {
+      entry,
+      globals,
     },
-    location,
-  } = props;
+  } = data;
 
   return (
     <Fragment>
       <Helmet>
-        <title>{`${entry.title} | ${globals.settings.siteName}`}</title>
+        <title>{entry.title}</title>
         <meta name="description" content={entry.description} />
-
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
+        {/* todo: don't hard-code domain */}
         <meta property="og:title" content={entry.title} />
-        <meta property="og:image" content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`} />
+        <meta property="og:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
+        <meta
+          property="og:image"
+          content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
+        />
         <meta property="og:description" content={entry.description} />
         <meta property="og:site_name" content={globals.settings.siteName} />
         <meta property="og:locale" content="nl_NL" />
@@ -42,7 +42,10 @@ const blog = (props) => {
         <meta name="twitter:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
         <meta name="twitter:title" content={entry.title} />
         <meta name="twitter:description" content={entry.description} />
-        <meta name="twitter:image" content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1920/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`} />
+        <meta
+          name="twitter:image"
+          content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1920/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
+        />
       </Helmet>
       <Layout>
         <MainVisual

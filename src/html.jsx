@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
 const Html = ({
   headComponents,
@@ -9,9 +10,6 @@ const Html = ({
 }) => (
   <html lang="nl">
     <head>
-      <meta charSet="utf-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
       {headComponents}
     </head>
     <body>

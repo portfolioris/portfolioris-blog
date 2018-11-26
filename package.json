@@ -42,14 +42,16 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "serve": "gatsby serve"
+    "develop": "npm run clean && gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "rimraf .cache public"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-alias": "^1.1.1",
     "gatsby-plugin-eslint": "^2.0.1",
     "gatsby-plugin-stylelint": "^2.0.0",
+    "rimraf": "^2.6.2",
     "stylelint": "^9.6.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.3.2",
