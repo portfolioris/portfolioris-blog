@@ -20,6 +20,7 @@ const blog = ({ data, location }) => {
   return (
     <Fragment>
       <Helmet>
+        {/* Blog-specific meta tags */}
         <title>{entry.title}</title>
         <meta name="description" content={entry.description} />
         <meta property="og:type" content="article" />
@@ -37,8 +38,8 @@ const blog = ({ data, location }) => {
         <meta property="og:image:height" content="630" />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@portfolioris" />
-        <meta name="twitter:creator" content="@portfolioris" />
+        <meta name="twitter:site" content={globals.settings.twitterHandle} />
+        <meta name="twitter:creator" content={entry.author.twitterHandle || globals.settings.twitterHandle} />
         <meta name="twitter:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
         <meta name="twitter:title" content={entry.title} />
         <meta name="twitter:description" content={entry.description} />
@@ -95,11 +96,15 @@ export const pageQuery = graphql`
               path
             }
           }
+          author {
+            twitterHandle
+          }
         }
       }
       globals {
         settings {
           siteName
+          twitterHandle
         }
       }
     }

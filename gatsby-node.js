@@ -42,9 +42,9 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 exports.onCreateWebpackConfig = ({
-                                   stage,
-                                   actions,
-                                 }) => {
+  stage,
+  actions,
+}) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [
