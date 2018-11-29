@@ -6,7 +6,8 @@ import PrimaryNav from 'components/molecules/PrimaryNav';
 import MenuToggle from 'components/molecules/MenuToggle';
 import Retain from 'components/atoms/objects/Retain';
 import Layer from 'components/atoms/objects/Layer';
-import Icon from 'components/atoms/Icon';
+// import logo from 'components/atoms/Icon/svgs/logo--portfolioris.svg';
+import logo from 'img/logo--portfolioris.svg';
 
 import './Header.scss';
 
@@ -33,7 +34,8 @@ const Header = ({
                     href="/"
                     className="c-header__logo-link"
                   >
-                    <Icon icon="logo--portfolioris" className="c-header__logo" />
+                    <img src={logo} alt="Portfolioris" className="c-header__logo" />
+                    {/* <Logo className="c-header__logo" /> */}
                     <span className="u-visually-hidden">Portfolioris</span>
                   </Link>
                 </div>

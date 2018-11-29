@@ -5,9 +5,6 @@ require('dotenv').config({
 const pxtorem = require('postcss-pxtorem');
 
 module.exports = {
-  siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -35,8 +32,6 @@ module.exports = {
         refetchInterval: 60,
       },
     },
-    // 'gatsby-plugin-sharp',
-    // 'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
     'gatsby-plugin-eslint',
     {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 import 'svgxuse';
 
 // Import all the svg's
@@ -15,11 +15,11 @@ const foo = {
   'logo--portfolioris': Logo,
 };
 
-const Icon = ({ icon }) => (
+const Icon = ({ icon, className }) => (
   React.createElement(
     foo[icon],
     {
-      className: 'c-icon',
+      className: classNames('c-icon', className),
     },
   )
 );
@@ -46,13 +46,13 @@ const Icon = ({ icon, className, size }) => (
 
 Icon.propTypes = {
   icon: PropTypes.string,
-  // className: PropTypes.string,
+  className: PropTypes.string,
   // size: PropTypes.string,
 };
 
 Icon.defaultProps = {
   icon: 'icon-arrow-right',
-  // className: '',
+  className: null,
   // size: '',
 };
 

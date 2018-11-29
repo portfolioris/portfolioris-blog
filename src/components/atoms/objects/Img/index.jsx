@@ -33,8 +33,8 @@ const Img = ({
         media="(min-width: 60em)"
       />
       <source
-        data-srcset={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${useSmallImage.name}`}
-        srcSet={!lazyload ? `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${useSmallImage.name}` : null}
+        data-srcset={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${useSmallImage.folder.path}${useSmallImage.filename}`}
+        srcSet={!lazyload ? `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${useSmallImage.folder.path}${useSmallImage.filename}` : null}
       />
       <img
         data-sizes="auto"

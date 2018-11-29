@@ -3,9 +3,13 @@
   "description": "The blog of Joris Hulsbosch",
   "version": "0.0.1",
   "author": "Joris Hulsbosch",
+  "browserslist": [
+    "last 1 version",
+    "> 1% in nl",
+    "not dead"
+  ],
   "dependencies": {
     "babel-plugin-inline-react-svg": "^1.0.1",
-    "babel-preset-gatsby": "^0.1.2",
     "blocss": "^7.0.0",
     "classnames": "^2.2.6",
     "dotenv": "^6.1.0",

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
 
 const Html = ({
   headComponents,
@@ -8,7 +7,7 @@ const Html = ({
   body,
   postBodyComponents,
 }) => (
-  <html lang="nl">
+  <html>
     <head>
       {headComponents}
     </head>
