@@ -60,10 +60,16 @@ const blog = ({ data, location }) => {
         url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
       },
       description: entry.description,
-      author: `${entry.author.firstName} ${entry.author.lastName}`,
-      datePublished: entry.postDate,
-      dateModifier: entry.dateUpdated,
-      publisher: `${entry.author.firstName} ${entry.author.lastName}`,
+      author: {
+        '@type': 'Person',
+        name: `${entry.author.firstName} ${entry.author.lastName}`,
+      },
+      datePublished: new Date(entry.postDate * 1000).toISOString().split('T')[0],
+      dateModified: new Date(entry.dateUpdated * 1000).toISOString().split('T')[0],
+      publisher: {
+        '@type': 'Person',
+        name: `${entry.author.firstName} ${entry.author.lastName}`,
+      },
       mainEntityOfPage: `https://beta.portfolioris.nl${location.pathname}`,
     },
   ];
