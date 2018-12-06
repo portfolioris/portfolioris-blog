@@ -20,9 +20,56 @@ const blog = ({ data, location }) => {
     },
   } = data;
 
+  const schemaOrgJSONLD = [
+    {
+      '@context': 'http://schema.org',
+      '@type': 'WebSite',
+      url: 'https://beta.portfolioris.nl',
+      name: globals.settings.siteName,
+    },
+    {
+      '@context': 'http://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@id': 'https://beta.portfolioris.nl/blog',
+            name: 'Blog',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@id': `https://beta.portfolioris.nl${location.pathname}`,
+            name: entry.title,
+          },
+        },
+      ],
+    },
+    {
+      '@context': 'http://schema.org',
+      '@type': 'BlogPosting',
+      url: `https://beta.portfolioris.nl${location.pathname}`,
+      name: entry.title,
+      headline: entry.title,
+      image: {
+        '@type': 'ImageObject',
+        url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
+      },
+      description: entry.description,
+      author: `${entry.author.firstName} ${entry.author.lastName}`,
+      datePublished: entry.postDate,
+      dateModifier: entry.dateUpdated,
+      publisher: `${entry.author.firstName} ${entry.author.lastName}`,
+      mainEntityOfPage: `https://beta.portfolioris.nl${location.pathname}`,
+    },
+  ];
+
   return (
     <Fragment>
-      <Date date={entry.postDate} />
       <Helmet>
         {/* Blog-specific meta tags */}
         <title>{entry.title}</title>
@@ -51,6 +98,9 @@ const blog = ({ data, location }) => {
           name="twitter:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1920/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
         />
+        <script type="application/ld+json">
+          {JSON.stringify(schemaOrgJSONLD)}
+        </script>
       </Helmet>
       <Layout>
         <Layer>
@@ -67,9 +117,10 @@ const blog = ({ data, location }) => {
               className="u-mb--small"
             />
             <p className="u-micro">
-              {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, ${entry.postDate}`}
+              {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
+              <Date dateString={entry.postDate} />
             </p>
-            <Date dateString={entry.postDate} />
+            {/* <Date dateString={entry.postDate} /> */}
             {/* <MainVisual
           heading={entry.title}
           subheading={entry.subheading}
@@ -125,6 +176,7 @@ export const pageQuery = graphql`
             lastName
           }
           postDate
+          dateUpdated
         }
       }
       globals {
