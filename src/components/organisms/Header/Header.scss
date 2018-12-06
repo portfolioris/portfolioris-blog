@@ -11,25 +11,27 @@
     ========================================================================= */
 
 .c-header {
-  pointer-events: none;
-  margin: $blocss-space-small;
+  background-color: $black;
+  //pointer-events: none;
+  padding: $blocss-space-tiny;
+  box-shadow: 0 0 $blocss-space-small transparentize($black, 0.5);
 }
 
 .c-header__logo-link {
-  pointer-events: auto;
-  color: $black;
-  transition: color $base-transition-duration $base-timing-function;
+  //pointer-events: auto;
+  //color: $black;
+  //transition: color $base-transition-duration $base-timing-function;
 
-  #{$global-interaction-states} {
-    color: $green;
-  }
+  //#{$global-interaction-states} {
+  //  color: $green;
+  //}
 }
 
 .c-header__logo {
-  pointer-events: auto;
+  //pointer-events: auto;
   margin-right: $blocss-space-small;
-  width: $blocss-space * 3;
-  height: $blocss-space * 1;
+  width: $blocss-space * 1.5;
+  height: $blocss-space * 1.5;
   display: block;
 }
 
@@ -40,7 +42,7 @@
 
 @include blocss-media-query(lap) {
   .c-header__logo {
-    width: $blocss-space * 6;
-    height: $blocss-space * 1.9;
+    //width: $blocss-space * 1.9;
+    //height: $blocss-space * 1.9;
   }
 }

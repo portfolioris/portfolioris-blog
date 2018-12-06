@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import Navigation from 'components/organisms/Navigation';
 
-import './Layout.scss';
+import 'sass/leading.scss';
 
 const Layout = ({ children }) => (
   <StaticQuery

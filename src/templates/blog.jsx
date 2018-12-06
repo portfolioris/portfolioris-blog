@@ -4,10 +4,13 @@ import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
 import Layout from 'components/organisms/Layout';
-import MainVisual from 'components/organisms/MainVisual';
+// import MainVisual from 'components/organisms/MainVisual';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
+import Heading from 'components/atoms/text/Heading';
+import Date from 'components/atoms/text/Date';
+
 
 const blog = ({ data, location }) => {
   const {
@@ -19,6 +22,7 @@ const blog = ({ data, location }) => {
 
   return (
     <Fragment>
+      <Date date={entry.postDate} />
       <Helmet>
         {/* Blog-specific meta tags */}
         <title>{entry.title}</title>
@@ -31,11 +35,11 @@ const blog = ({ data, location }) => {
           property="og:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
         />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:description" content={entry.description} />
         <meta property="og:site_name" content={globals.settings.siteName} />
         <meta property="og:locale" content="nl_NL" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content={globals.settings.twitterHandle} />
@@ -49,11 +53,30 @@ const blog = ({ data, location }) => {
         />
       </Helmet>
       <Layout>
-        <MainVisual
+        <Layer>
+          <Retain size="narrow">
+            <Heading
+              text={entry.title}
+              level={1}
+              stylingLevel={0}
+            />
+            <Text
+              text={entry.subheading}
+              type="md"
+              modifier="intro"
+              className="u-mb--small"
+            />
+            <p className="u-micro">
+              {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, ${entry.postDate}`}
+            </p>
+            <Date dateString={entry.postDate} />
+            {/* <MainVisual
           heading={entry.title}
           subheading={entry.subheading}
           image={entry.mainImage[0]}
-        />
+        /> */}
+          </Retain>
+        </Layer>
         <Layer>
           <Retain size="narrow">
             <Text
@@ -98,7 +121,10 @@ export const pageQuery = graphql`
           }
           author {
             twitterHandle
+            firstName
+            lastName
           }
+          postDate
         }
       }
       globals {

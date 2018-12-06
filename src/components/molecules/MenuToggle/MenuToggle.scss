@@ -2,9 +2,10 @@
 
 .c-menu-toggle {
   padding: $blocss-space-tiny;
-  width: 42px;
-  display: block;
-  text-align: center;
+  width: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: $white;
   line-height: 1;

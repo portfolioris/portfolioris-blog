@@ -21,6 +21,7 @@ const Heading = ({
     `h${level}`,
     {
       className: classNames(`u-heading  ${className}`, {
+        'u-macro': stylingLevel === 0,
         'u-alpha': stylingLevel === 1,
         'u-beta': stylingLevel === 2,
         'u-gamma': stylingLevel === 3,

@@ -1,0 +1,28 @@
+/*  =========================================================================
+    Link
+    ========================================================================= */
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: $green;
+  transition: color $base-transition-duration-short linear;
+  font-weight: bold;
+
+  #{$global-interaction-states} {
+    color: $black;
+  }
+}
+
+
+
+/*  Theming
+    ========================================================================= */
+
+.t-color--light {
+  a {
+    #{$global-interaction-states} {
+      color: $white;
+    }
+  }
+}

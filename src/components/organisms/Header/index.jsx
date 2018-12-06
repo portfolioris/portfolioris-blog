@@ -7,7 +7,7 @@ import MenuToggle from 'components/molecules/MenuToggle';
 import Retain from 'components/atoms/objects/Retain';
 import Layer from 'components/atoms/objects/Layer';
 // import logo from 'components/atoms/Icon/svgs/logo--portfolioris.svg';
-import logo from 'img/logo--portfolioris.svg';
+import logo from 'img/logo--portfolioris-small.svg';
 
 import './Header.scss';
 

@@ -17,6 +17,10 @@ module.exports = {
             'img',
             './src/img',
           ],
+          [
+            'sass',
+            './src/sass',
+          ],
         ],
         extensions: ['.ts', '.js', '.jsx', '.json'],
       },
