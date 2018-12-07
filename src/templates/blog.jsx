@@ -9,7 +9,7 @@ import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 import Heading from 'components/atoms/text/Heading';
-import Date from 'components/atoms/text/Date';
+import DateString from 'components/atoms/text/DateString';
 
 
 const blog = ({ data, location }) => {
@@ -64,7 +64,7 @@ const blog = ({ data, location }) => {
         '@type': 'Person',
         name: `${entry.author.firstName} ${entry.author.lastName}`,
       },
-      datePublished: new Date(entry.postDate * 1000).toISOString().split('T')[0],
+      datePublished: `${new Date(entry.postDate * 1000).toISOString().split('T')[0]}`,
       dateModified: new Date(entry.dateUpdated * 1000).toISOString().split('T')[0],
       publisher: {
         '@type': 'Person',
@@ -83,27 +83,31 @@ const blog = ({ data, location }) => {
         <meta property="og:type" content="article" />
         {/* todo: don't hard-code domain */}
         <meta property="og:title" content={entry.title} />
+        <meta property="og:description" content={entry.description} />
         <meta property="og:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
         <meta
           property="og:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
         />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:description" content={entry.description} />
         <meta property="og:site_name" content={globals.settings.siteName} />
         <meta property="og:locale" content="nl_NL" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content={globals.settings.twitterHandle} />
-        <meta name="twitter:creator" content={entry.author.twitterHandle || globals.settings.twitterHandle} />
+        <meta name="twitter:image:alt" content={entry.mainImage[0].title} />
+
+        {/* <meta
+          name="twitter:creator"
+          content={entry.author.twitterHandle || globals.settings.twitterHandle}
+        />
         <meta name="twitter:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
         <meta name="twitter:title" content={entry.title} />
         <meta name="twitter:description" content={entry.description} />
         <meta
           name="twitter:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1920/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
-        />
+        /> */}
+
         <script type="application/ld+json">
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
@@ -124,7 +128,7 @@ const blog = ({ data, location }) => {
             />
             <p className="u-micro">
               {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
-              <Date dateString={entry.postDate} />
+              <DateString dateString={entry.postDate} />
             </p>
             {/* <Date dateString={entry.postDate} /> */}
             {/* <MainVisual

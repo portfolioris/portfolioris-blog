@@ -19,11 +19,11 @@ const DateString = ({ dateString }) => (
 );
 
 DateString.propTypes = {
-  dateString: PropTypes.string,
+  dateString: PropTypes.number.isRequired,
 };
 
-DateString.defaultProps = {
-  dateString: '2008-12-02',
-};
+// DateString.defaultProps = {
+//   dateString: '2008-12-02',
+// };
 
 export default DateString;
