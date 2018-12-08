@@ -69,8 +69,17 @@
   .o-layer--huge {
     @include blocss-rem(padding, $blocss-space*4 0 $blocss-space*3 0);
   }
+}
 
-  .o-layer--collapse {
-    padding-top: 0;
-  }
+
+
+/*  Overrides
+    ========================================================================= */
+
+.o-layer--collapse-top {
+  padding-top: 0;
+}
+
+.o-layer--collapse-bottom {
+  padding-bottom: 0;
 }

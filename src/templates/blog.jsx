@@ -24,7 +24,7 @@ const blog = ({ data, location }) => {
     {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      url: 'https://beta.portfolioris.nl',
+      url: globals.settings.domain,
       name: globals.settings.siteName,
     },
     {
@@ -35,7 +35,7 @@ const blog = ({ data, location }) => {
           '@type': 'ListItem',
           position: 1,
           item: {
-            '@id': 'https://beta.portfolioris.nl/blog',
+            '@id': `${globals.settings.domain}/blog`,
             name: 'Blog',
           },
         },
@@ -43,7 +43,7 @@ const blog = ({ data, location }) => {
           '@type': 'ListItem',
           position: 2,
           item: {
-            '@id': `https://beta.portfolioris.nl${location.pathname}`,
+            '@id': `${globals.settings.domain}${location.pathname}`,
             name: entry.title,
           },
         },
@@ -52,7 +52,7 @@ const blog = ({ data, location }) => {
     {
       '@context': 'http://schema.org',
       '@type': 'BlogPosting',
-      url: `https://beta.portfolioris.nl${location.pathname}`,
+      url: `${globals.settings.domain}${location.pathname}`,
       name: entry.title,
       headline: entry.title,
       image: {
@@ -70,7 +70,7 @@ const blog = ({ data, location }) => {
         '@type': 'Person',
         name: `${entry.author.firstName} ${entry.author.lastName}`,
       },
-      mainEntityOfPage: `https://beta.portfolioris.nl${location.pathname}`,
+      mainEntityOfPage: `${globals.settings.domain}${location.pathname}`,
     },
   ];
 
@@ -84,7 +84,7 @@ const blog = ({ data, location }) => {
         {/* todo: don't hard-code domain */}
         <meta property="og:title" content={entry.title} />
         <meta property="og:description" content={entry.description} />
-        <meta property="og:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
+        <meta property="og:url" content={`${globals.settings.domain}${location.pathname}`} />
         <meta
           property="og:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
@@ -95,18 +95,6 @@ const blog = ({ data, location }) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content={globals.settings.twitterHandle} />
         <meta name="twitter:image:alt" content={entry.mainImage[0].title} />
-
-        {/* <meta
-          name="twitter:creator"
-          content={entry.author.twitterHandle || globals.settings.twitterHandle}
-        />
-        <meta name="twitter:url" content={`https://beta.portfolioris.nl${location.pathname}`} />
-        <meta name="twitter:title" content={entry.title} />
-        <meta name="twitter:description" content={entry.description} />
-        <meta
-          name="twitter:image"
-          content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1920/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
-        /> */}
 
         <script type="application/ld+json">
           {JSON.stringify(schemaOrgJSONLD)}
@@ -130,7 +118,6 @@ const blog = ({ data, location }) => {
               {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
               <DateString dateString={entry.postDate} />
             </p>
-            {/* <Date dateString={entry.postDate} /> */}
             {/* <MainVisual
           heading={entry.title}
           subheading={entry.subheading}
@@ -138,7 +125,9 @@ const blog = ({ data, location }) => {
         /> */}
           </Retain>
         </Layer>
-        <Layer>
+        <Layer
+          collapseTop
+        >
           <Retain size="narrow">
             <Text
               text={entry.richText}
@@ -193,6 +182,7 @@ export const pageQuery = graphql`
         settings {
           siteName
           twitterHandle
+          domain
         }
       }
     }

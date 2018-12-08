@@ -37,7 +37,7 @@ const ImageBlock = props => (
       );
       const Img = craft.assets.find(asset => asset.id === imgId);
       return (
-        <figure className="c-text__figure">
+        <figure className="c-text__figure  u-mb">
           <img
             data-sizes="auto"
             className="lazyload  c-rte__img"

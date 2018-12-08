@@ -6,6 +6,7 @@ import CodeBlock from 'components/atoms/text/CodeBlock';
 import ImageBlock from 'components/atoms/text/ImageBlock';
 
 import './Text.scss';
+import ParagraphBlock from '../ParagraphBlock';
 
 const Text = ({
   text,
@@ -23,6 +24,7 @@ const Text = ({
       renderers: type === 'md' ? {
         code: CodeBlock,
         image: ImageBlock,
+        paragraph: ParagraphBlock,
       } : null,
     },
     type === 'md' ? null : text,

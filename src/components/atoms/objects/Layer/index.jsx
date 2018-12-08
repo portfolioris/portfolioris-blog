@@ -9,6 +9,8 @@ const Layer = ({
   children,
   size,
   background,
+  collapseTop,
+  collapseBottom,
 }) => (
   <Theme
     color={background}
@@ -21,6 +23,8 @@ const Layer = ({
       'o-layer--large': size === 'large',
       'o-layer--huge': size === 'huge',
       'o-layer--fullscreen': size === 'fullscreen',
+      'o-layer--collapse-top': collapseTop,
+      'o-layer--collapse-bottom': collapseBottom,
     })}
   >
     {children}
@@ -31,11 +35,15 @@ Layer.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   background: PropTypes.string,
+  collapseTop: PropTypes.bool,
+  collapseBottom: PropTypes.bool,
 };
 Layer.defaultProps = {
   children: [],
   size: 'large',
   background: null,
+  collapseTop: false,
+  collapseBottom: false,
 };
 
 export default Layer;
