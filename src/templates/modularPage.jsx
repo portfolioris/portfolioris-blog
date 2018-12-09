@@ -18,12 +18,17 @@ const blog = ({ data }) => {
       <Helmet todotitle={`todo: ${entry.title} | ${globals.settings.siteName}`} />
       <Layout>
         {entry.modules.map(item => (
+          item.typeName === 'craft_ModulesBlogOverview' ? (
+            <ArticleOverview key={item.id} {...item} />
+          ) : null
+        ))}
+        {/* {entry.modules.map(item => (
           <Fragment key={item.id}>
             {item.typeName === 'craft_ModulesBlogOverview' ? (
-              <ArticleOverview />
+              <ArticleOverview {...item} />
             ) : null}
           </Fragment>
-        ))}
+        ))} */}
       </Layout>
     </Fragment>
   );
@@ -48,6 +53,12 @@ export const pageQuery = graphql`
         ... on craft_ModularPage {
           modules {
             typeName: __typename
+            ...articleOverviewFragment
+#            ... on craft_ModulesBlogOverview {
+#              id
+#              heading
+#              viewAll
+#            }
           }
         }
       }

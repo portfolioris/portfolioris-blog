@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { push } from 'gatsby';
 import Heading from 'components/atoms/text/Heading';
+import DateString from '../../atoms/text/DateString';
 
 class ArticleOverviewItem extends Component {
   constructor(props) {
@@ -18,15 +19,17 @@ class ArticleOverviewItem extends Component {
 
   handleClick(e) {
     if (e.target.tagName !== 'A') {
-      const { href } = this.props;
-      push(href);
+      const { uri } = this.props;
+      push(uri);
     }
   }
 
   render() {
     const {
       title,
-      href,
+      subheading,
+      uri,
+      postDate,
     } = this.props;
 
     const {
@@ -41,24 +44,15 @@ class ArticleOverviewItem extends Component {
         onClick={e => this.handleClick(e)}
         role="presentation"
       >
-        <div className="islet  island@lap">
-          <div className="sign-group--small">
-            <Heading
-              text={title}
-              level={3}
-              stylingLevel={4}
-              href={href}
-            />
-            <div className="sign-group--tiny">
-              <div className="meta">
-                <time dateTime="<?= strftime('%Y-%m-%d', $date) ?>">
-                  visual date
-                </time>
-                | type
-              </div>
-              <div className="mini">content</div>
-            </div>
-          </div>
+        <Heading
+          text={title}
+          level={3}
+          stylingLevel={4}
+          href={uri}
+        />
+        <div className="u-micro">
+          {subheading}
+          <DateString dateString={postDate} />
         </div>
       </article>
     );
@@ -67,11 +61,15 @@ class ArticleOverviewItem extends Component {
 
 ArticleOverviewItem.propTypes = {
   title: PropTypes.string,
-  href: PropTypes.string,
+  subheading: PropTypes.string,
+  uri: PropTypes.string,
+  postDate: PropTypes.number,
 };
 ArticleOverviewItem.defaultProps = {
   title: null,
-  href: null,
+  subheading: null,
+  uri: null,
+  postDate: null,
 };
 
 export default ArticleOverviewItem;
