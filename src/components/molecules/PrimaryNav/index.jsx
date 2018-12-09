@@ -17,7 +17,8 @@ const PrimaryNav = ({
             // isActive={parseInt(item.object_id, 10) === activePageId}
             modifier="transparant"
             text={item.title}
-            href={item.url}
+            // href={item.menuItem[0].uri}
+            href={item.menuItem[0].uri === '__home__' ? '/' : item.menuItem[0].uri}
           />
         </li>
       ))}

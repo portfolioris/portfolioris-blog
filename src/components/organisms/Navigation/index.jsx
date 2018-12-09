@@ -88,7 +88,8 @@ class Navigation extends Component {
                   <Button
                     // isActive={item.object_id === activePageId}
                     text={item.title}
-                    href={item.url}
+                    // href={item.url}
+                    href={item.menuItem[0].uri === '__home__' ? '/' : item.menuItem[0].uri}
                     onClick={this.closeMenu}
                   />
                 </li>

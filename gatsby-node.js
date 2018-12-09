@@ -27,16 +27,23 @@ exports.createPages = ({ actions, graphql }) => {
       const pages = result.data.craft.entries;
 
       pages.forEach((entry) => {
-        createPage({
-          path: entry.uri === '__home__' ? '/' : entry.uri,
-          component: path.resolve(
-            `src/templates/${entry.section.handle}.jsx`,
-          ),
-          // additional data can be passed via context
-          context: {
-            uri: entry.uri,
-          },
-        });
+        switch (entry.section.handle) {
+          case 'blog':
+          case 'modularPage':
+            createPage({
+              path: entry.uri === '__home__' ? '/' : entry.uri,
+              component: path.resolve(
+                `src/templates/${entry.section.handle}.jsx`,
+              ),
+              // additional data can be passed via context
+              context: {
+                uri: entry.uri,
+              },
+            });
+            break;
+          default:
+            break;
+        }
       });
     });
 };

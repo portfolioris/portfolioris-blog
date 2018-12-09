@@ -18,30 +18,48 @@ const Layout = ({ children }) => (
               siteLanguage
             }
           }
+          entries(section: mainNavigation) {
+            ... on craft_MainNavigation {
+              id
+              title
+              menuItem {
+                uri
+              }
+            }
+          }
         }
       }
     `}
-    render={data => (
-      <Fragment>
-        <Helmet
-          titleTemplate={`%s | ${data.craft.globals.settings.siteName}`}
-          defaultTitle={data.craft.globals.settings.siteName}
-          meta={[
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { name: 'charset', content: 'utf-8' },
-            { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' },
-            { name: 'apple-mobile-web-app-capable', content: 'yes' },
-            { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-          ]}
-        >
-          <html lang={data.craft.globals.settings.siteLanguage} />
-          <link rel="apple-touch-icon-precomposed" href="/icons/icon-512x512.png" />
-        </Helmet>
-        <Navigation>
-          {children}
-        </Navigation>
-      </Fragment>
-    )}
+    render={(data) => {
+      const {
+        globals: {
+          settings,
+        },
+        entries,
+      } = data.craft;
+
+      return (
+        <Fragment>
+          <Helmet
+            titleTemplate={`%s • ${settings.siteName}`}
+            defaultTitle={settings.siteName}
+            meta={[
+              { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+              { name: 'charset', content: 'utf-8' },
+              { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' },
+              { name: 'apple-mobile-web-app-capable', content: 'yes' },
+              { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+            ]}
+          >
+            <html lang={settings.siteLanguage} />
+            <link rel="apple-touch-icon-precomposed" href="/icons/icon-512x512.png" />
+          </Helmet>
+          <Navigation items={entries}>
+            {children}
+          </Navigation>
+        </Fragment>
+      );
+    }}
   />
 );
 

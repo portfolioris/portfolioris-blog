@@ -6,13 +6,24 @@ import Helmet from 'react-helmet';
 import ArticleOverview from 'components/organisms/ArticleOverview';
 
 const blog = ({ data }) => {
-  const { craft: { entry, globals } } = data;
+  const {
+    craft: {
+      entry,
+      globals,
+    },
+  } = data;
 
   return (
     <Fragment>
       <Helmet todotitle={`todo: ${entry.title} | ${globals.settings.siteName}`} />
       <Layout>
-        <ArticleOverview />
+        {entry.modules.map(item => (
+          <Fragment key={item.id}>
+            {item.typeName === 'craft_ModulesBlogOverview' ? (
+              <ArticleOverview />
+            ) : null}
+          </Fragment>
+        ))}
       </Layout>
     </Fragment>
   );
@@ -29,16 +40,22 @@ blog.defaultProps = {
 export default blog;
 
 export const pageQuery = graphql`
-    query modularPage($uri: String!) {
-        craft {
-            entry(uri: $uri) {
-                title
-            }
-            globals {
-                settings {
-                    siteName
-                }
-            }
+  query modularPage($uri: String!) {
+    craft {
+      entry(uri: $uri) {
+        id
+        title
+        ... on craft_ModularPage {
+          modules {
+            typeName: __typename
+          }
         }
+      }
+      globals {
+        settings {
+          siteName
+        }
+      }
     }
+  }
 `;
