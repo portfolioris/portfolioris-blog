@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { push } from 'gatsby';
 import Heading from 'components/atoms/text/Heading';
-import DateString from '../../atoms/text/DateString';
+import DateString from 'components/atoms/text/DateString';
 
 class ArticleOverviewItem extends Component {
   constructor(props) {
@@ -49,11 +49,14 @@ class ArticleOverviewItem extends Component {
           level={3}
           stylingLevel={4}
           href={uri}
+          className="u-mb--tiny"
         />
-        <div className="u-micro">
+        <p className="u-micro  u-bold  u-mb--tiny">
           {subheading}
+        </p>
+        <p className="u-micro">
           <DateString dateString={postDate} />
-        </div>
+        </p>
       </article>
     );
   }

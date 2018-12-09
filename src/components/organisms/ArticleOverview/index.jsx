@@ -5,7 +5,8 @@ import { StaticQuery, graphql } from 'gatsby';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
-import Heading from '../../atoms/text/Heading';
+import Heading from 'components/atoms/text/Heading';
+import Theme from 'components/atoms/utilities/Theme';
 
 const ArticleOverview = ({
   heading,
@@ -30,25 +31,25 @@ const ArticleOverview = ({
     `}
     render={({ craft }) => (
       <section>
-        <Layer>
-          <Retain>
-            <Heading text={heading} level={2} stylingLevel={1} />
-            <ul className="o-layout  o-layout--gutter-small">
-              {craft.entries.map(item => (
-                <li
-                  key={item.id}
-                  className="o-layout__cell  u-fraction--6of12@lap  u-fraction--4o12@desk"
-                >
-                  <ArticleOverviewItem
-                    {...item}
-                    // href={item.uri}
-                    // title={item.title}
-                  />
-                </li>
-              ))}
-            </ul>
-          </Retain>
-        </Layer>
+        <Theme color="black">
+          <Layer>
+            <Retain>
+              <Heading text={heading} level={2} stylingLevel={1} />
+              <ul className="o-layout  o-layout--gutter-small">
+                {craft.entries.map(item => (
+                  <li
+                    key={item.id}
+                    className="o-layout__cell  u-fraction--6of12@lap  u-fraction--4o12@desk"
+                  >
+                    <ArticleOverviewItem
+                      {...item}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Retain>
+          </Layer>
+        </Theme>
       </section>
     )}
   />
