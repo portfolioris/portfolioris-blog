@@ -12,37 +12,13 @@
 
 .c-header {
   background-color: $black;
-  //pointer-events: none;
-  padding: $blocss-space-tiny;
-  box-shadow: 0 0 $blocss-space-small transparentize($black, 0.5);
-}
-
-.c-header__logo-link {
-  //pointer-events: auto;
-  //color: $black;
-  //transition: color $base-transition-duration $base-timing-function;
-
-  //#{$global-interaction-states} {
-  //  color: $green;
-  //}
+  //padding: $blocss-space-tiny;
+  //box-shadow: 0 0 $blocss-space-small transparentize($black, 0.5);
 }
 
 .c-header__logo {
-  //pointer-events: auto;
-  margin-right: $blocss-space-small;
-  width: $blocss-space * 1.5;
-  height: $blocss-space * 1.5;
+  //margin-right: $blocss-space-small;
+  //width: $blocss-space * 1.5;
+  //height: $blocss-space * 1.5;
   display: block;
-}
-
-
-
-/*  Responsive
-    ========================================================================= */
-
-@include blocss-media-query(lap) {
-  .c-header__logo {
-    //width: $blocss-space * 1.9;
-    //height: $blocss-space * 1.9;
-  }
 }

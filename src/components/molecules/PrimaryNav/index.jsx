@@ -7,11 +7,11 @@ const PrimaryNav = ({
   // activePageId,
 }) => (
   <nav>
-    <ul className="o-layout  o-layout--gutter-small  o-layout--inline  u-mb-flatten">
+    <ul className="o-layout  o-layout--small  o-layout--gutter-small  o-layout--inline  u-mb-flatten">
       {items.map(item => (
         <li
           key={item.id}
-          className="o-layout__cell  o-layout__cell--fit"
+          className="o-layout__fit  o-layout__cell  o-layout__cell--fit"
         >
           <Button
             // isActive={parseInt(item.object_id, 10) === activePageId}

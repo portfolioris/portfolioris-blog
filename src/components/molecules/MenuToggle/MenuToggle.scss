@@ -1,7 +1,7 @@
 @import "engine";
 
 .c-menu-toggle {
-  padding: $blocss-space-tiny;
+  //padding: $blocss-space-tiny;
   width: 32px;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
 }
 
 .c-menu-toggle__label {
-  @include blocss-font-size(10px, false);
+  //@include blocss-font-size(10px, false);
 
   display: block;
 }

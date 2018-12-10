@@ -17,12 +17,13 @@ $c-button--transition-duration: $base-transition-duration-short !default;
 
 $c-button--states: "&:hover, &:active, &:focus, &.is-active" !default;
 
-$c-button--space: $blocss-space !default;
+//$c-button--space: $blocss-space !default;
+$c-button--space: $inuit-global-spacing-unit !default;
 
 
 // Default settings
-$c-button--space-vertical: $blocss-space-small !default;
-$c-button--space-horizontal: $blocss-space-small !default;
+$c-button--space-vertical: $inuit-global-spacing-unit-small !default;
+$c-button--space-horizontal: $inuit-global-spacing-unit-small !default;
 $c-button--icon-offset: $c-button--space !default;
 $c-button--icon-animation-offset: 10px !default;
 
@@ -111,7 +112,7 @@ $c-button--disabled-background-color: $gray-light !default;
 .c-button__inner {
   display: inline-flex;
   align-items: stretch;
-  line-height: $blocss-line-height-ratio; /* [1] */
+  //line-height: $blocss-line-height-ratio; /* [1] */
 }
 
 .c-button__label {
@@ -256,8 +257,8 @@ $c-button--disabled-background-color: $gray-light !default;
   @include c-button--hide-label;
 }
 
-@include blocss-media-query (max-lap) {
-  .c-button--hide-label\@max-lap {
-    @include c-button--hide-label;
-  }
-}
+//@include blocss-media-query (max-lap) {
+//  .c-button--hide-label\@max-lap {
+//    @include c-button--hide-label;
+//  }
+//}

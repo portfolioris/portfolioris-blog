@@ -2209,11 +2209,6 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-blocss@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/blocss/-/blocss-7.0.0.tgz#98c7d49964da98547bba7f3ca91846ac417ba6be"
-  integrity sha1-mMfUmWTamFR7un88qRhGrEF7pr4=
-
 bluebird@^3.5.0, bluebird@^3.5.1:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
@@ -6352,6 +6347,13 @@ intl-relativeformat@^2.1.0:
   integrity sha1-AQ8RBYAiUfQKxH0OPhogE0iiVd8=
   dependencies:
     intl-messageformat "^2.0.0"
+
+inuitcss@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/inuitcss/-/inuitcss-6.0.0.tgz#164a2557736a29a9874f99c6165174d996ea6a53"
+  integrity sha512-FnyXNy2WSzSli4INmgtrsFwkzDljabK583AoC7KZutB6m8bVrAzjZ7jadro4N4RcqQRpMlW88NwgHIWgD7CDrg==
+  dependencies:
+    sass-mq "^3.3.2"
 
 invariant@^2.1.1, invariant@^2.2.0, invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
@@ -10693,6 +10695,11 @@ sass-loader@^7.0.1:
     neo-async "^2.5.0"
     pify "^3.0.0"
     semver "^5.5.0"
+
+sass-mq@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-3.3.2.tgz#3472e04c31a432bcd55b3b604edc72ae9a4def1a"
+  integrity sha1-NHLgTDGkMrzVWztgTtxyrppN7xo=
 
 sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"

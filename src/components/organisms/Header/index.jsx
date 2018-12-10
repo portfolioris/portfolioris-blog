@@ -25,10 +25,10 @@ const Header = ({
         size="full"
       >
         <div className="c-header">
-          <div className="o-layout  o-layout--align-middle">
-            <div className="o-layout__cell  o-layout__cell--fill">
+          <div className="o-layout  o-layout--middle">
+            <div className="o-layout__fill  o-layout__cell  o-layout__cell--fill">
               <div className="o-layout  o-layout--align-middle">
-                <div className="o-layout__cell  o-layout__cell--fit">
+                <div className="o-layout__fit  o-layout__cell  o-layout__cell--fit">
                   <Link
                     to="/"
                     href="/"
@@ -39,14 +39,14 @@ const Header = ({
                     <span className="u-visually-hidden">Portfolioris</span>
                   </Link>
                 </div>
-                <div className="o-layout__cell  o-layout__cell--fit  o-layout__cell--center">
+                <div className="o-layout__fit  o-layout__cell  o-layout__cell--fit  o-layout__cell--center">
                   <div className="u-hidden@max-lap">
                     <PrimaryNav items={items} activePageId={activePageId} />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="o-layout__cell  o-layout__cell--fit  u-hidden@desk">
+            <div className="o-layout__fit  o-layout__cell  o-layout__cell--fit  u-hidden@desk">
               <MenuToggle
                 handleToggleMenu={handleToggleMenu}
                 isOpen={menuIsOpen}
