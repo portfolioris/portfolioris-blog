@@ -34,6 +34,29 @@
  * second and third items will be 50% of their parent, until they also become
  * 33.333% width at the medium breakpoint.
  *
+ * You can also make any horizontal layout using the following structure:
+ *
+ *   <div class="o-layout">
+ *     <div class="o-layout__fit">
+ *     </div>
+ *     <div class="o-layout__fit">
+ *     </div>
+ *     <div class="o-layout__fit">
+ *     </div>
+ *   </div>
+ *
+ * The above will make the cells shrink-wrap their contents
+ *
+ * You can also make a 'justified' layout, with one or more cells left, and a cell pushed
+ * all the way to the right:
+ *
+ *   <div class="o-layout">
+ *     <div class="o-layout__fill">
+ *     </div>
+ *     <div class="o-layout__fit">
+ *     </div>
+ *   </div>
+ *
  * We can also manipulate entire layout systems by adding a series of modifiers
  * to the `.o-layout` block. For example:
  *
