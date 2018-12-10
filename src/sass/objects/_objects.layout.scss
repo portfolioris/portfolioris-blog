@@ -82,7 +82,6 @@ $inuit-layout-breakpoint-separator: \@ !default;
 
 
 
-
 /*  Functions/Mixins
     Functions and/or mixins used in this module
     ========================================================================= */
@@ -304,18 +303,24 @@ $inuit-layout-breakpoint-separator: \@ !default;
 /*  Responsive
     ========================================================================= */
 
-//@each $name in $blocss-breakpoint-has-layout-fit {
-//  @include mq($name) {
-//    .o-layout__cell--fit#{$inuit-layout-breakpoint-separator}#{$name} {
-//      @include layout-fit;
-//    }
-//  }
-//}
-//
-//@each $name in $blocss-breakpoint-has-layout-fill {
-//  @include mq($name) {
-//    .o-layout__cell--fill#{$inuit-layout-breakpoint-separator}#{$name} {
-//      @include layout-fill;
-//    }
-//  }
-//}
+
+/**
+ * If we’re using Sass-MQ, automatically generate fit/fill classes for each of our
+ * defined breakpoints, and give them a Responsive Suffix, e.g.:
+ *
+ * <div class="o-layout__fit@mobile">
+ */
+
+@if (variable-exists(mq-breakpoints)) {
+  @each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
+    @include mq($from: $inuit-bp-name) {
+      .o-layout__fit#{$inuit-layout-breakpoint-separator}#{$inuit-bp-name} {
+        @include layout-fit;
+      }
+
+      .o-layout__fill#{$inuit-layout-breakpoint-separator}#{$inuit-bp-name} {
+        @include layout-fill;
+      }
+    }
+  }
+}

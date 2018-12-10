@@ -37,12 +37,19 @@ $wall: 1280px;
 //  "wall": "(min-width: #{$wall / $blocss-base-font-size * 1em})",
 //) !default;
 
-$blocss-fractions: 12;
-$blocss-breakpoint-has-fractions: ("lap", "desk");
-$blocss-breakpoint-has-layout-fit: ("lap", "desk");
-$blocss-breakpoint-has-layout-fill: ("lap", "desk");
-$blocss-breakpoint-has-visually-hidden: ("palm", "max-lap", "lap", "desk");
-$blocss-breakpoint-has-hidden: ("palm", "max-lap", "lap", "desk");
+$mq-breakpoints: (
+  tablet:  580px,
+  desktop: 980px,
+  wide:    1280px,
+);
+
+
+//$blocss-fractions: 12;
+//$blocss-breakpoint-has-fractions: ("lap", "desk");
+//$blocss-breakpoint-has-layout-fit: ("lap", "desk");
+//$blocss-breakpoint-has-layout-fill: ("lap", "desk");
+//$blocss-breakpoint-has-visually-hidden: ("palm", "max-lap", "lap", "desk");
+//$blocss-breakpoint-has-hidden: ("palm", "max-lap", "lap", "desk");
 
 
 
