@@ -4,15 +4,13 @@ import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
 import Layout from 'components/organisms/Layout';
-// import MainVisual from 'components/organisms/MainVisual';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 import Heading from 'components/atoms/text/Heading';
 import DateString from 'components/atoms/text/DateString';
 
-
-const blog = ({ data, location }) => {
+const blog = ({ data }) => {
   const {
     craft: {
       entry,
@@ -35,15 +33,15 @@ const blog = ({ data, location }) => {
           '@type': 'ListItem',
           position: 1,
           item: {
-            '@id': `${globals.settings.domain}/blog`,
-            name: 'Blog',
+            '@id': `${globals.settings.domain}/${entry.section.handle}`,
+            name: entry.section.name,
           },
         },
         {
           '@type': 'ListItem',
           position: 2,
           item: {
-            '@id': `${globals.settings.domain}${location.pathname}`,
+            '@id': `${globals.settings.domain}/${entry.uri}`,
             name: entry.title,
           },
         },
@@ -52,7 +50,7 @@ const blog = ({ data, location }) => {
     {
       '@context': 'http://schema.org',
       '@type': 'BlogPosting',
-      url: `${globals.settings.domain}${location.pathname}`,
+      url: `${globals.settings.domain}${entry.uri}`,
       name: entry.title,
       headline: entry.title,
       image: {
@@ -64,27 +62,27 @@ const blog = ({ data, location }) => {
         '@type': 'Person',
         name: `${entry.author.firstName} ${entry.author.lastName}`,
       },
-      datePublished: `${new Date(entry.postDate * 1000).toISOString().split('T')[0]}`,
+      datePublished: new Date(entry.postDate * 1000).toISOString().split('T')[0],
       dateModified: new Date(entry.dateUpdated * 1000).toISOString().split('T')[0],
       publisher: {
         '@type': 'Person',
         name: `${entry.author.firstName} ${entry.author.lastName}`,
       },
-      mainEntityOfPage: `${globals.settings.domain}${location.pathname}`,
+      mainEntityOfPage: `${globals.settings.domain}/${entry.uri}`,
     },
   ];
 
   return (
-    <Fragment>
+    <Layout>
       <Helmet>
         {/* Blog-specific meta tags */}
         <title>{entry.title}</title>
         <meta name="description" content={entry.description} />
+
         <meta property="og:type" content="article" />
-        {/* todo: don't hard-code domain */}
         <meta property="og:title" content={entry.title} />
         <meta property="og:description" content={entry.description} />
-        <meta property="og:url" content={`${globals.settings.domain}${location.pathname}`} />
+        <meta property="og:url" content={`${globals.settings.domain}/${entry.uri}`} />
         <meta
           property="og:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
@@ -100,54 +98,45 @@ const blog = ({ data, location }) => {
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
       </Helmet>
-      <Layout>
-        <Layer>
-          <Retain size="narrow">
-            <Heading
-              text={entry.title}
-              level={1}
-              stylingLevel={0}
-            />
-            <Text
-              text={entry.subheading}
-              type="md"
-              modifier="intro"
-              className="u-mb--small"
-            />
-            <p className="u-micro">
-              {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
-              <DateString dateString={entry.postDate} />
-            </p>
-            {/* <MainVisual
-          heading={entry.title}
-          subheading={entry.subheading}
-          image={entry.mainImage[0]}
-        /> */}
-          </Retain>
-        </Layer>
-        <Layer
-          collapseTop
-        >
-          <Retain size="narrow">
-            <Text
-              text={entry.richText}
-              type="md"
-            />
-          </Retain>
-        </Layer>
-      </Layout>
-    </Fragment>
+      <Layer>
+        <Retain size="narrow">
+          <Heading
+            text={entry.title}
+            level={1}
+            stylingLevel={0}
+          />
+          <Text
+            text={entry.subheading}
+            type="md"
+            modifier="intro"
+            className="u-mb--small"
+          />
+          <p className="u-micro">
+            {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
+            <DateString dateString={entry.postDate} />
+          </p>
+        </Retain>
+      </Layer>
+      <Layer
+        collapseTop
+      >
+        <Retain size="narrow">
+          <Text
+            text={entry.richText}
+            type="md"
+          />
+        </Retain>
+      </Layer>
+    </Layout>
   );
 };
 
 blog.propTypes = {
   data: PropTypes.objectOf(PropTypes.any),
-  location: PropTypes.objectOf(PropTypes.any),
 };
 
 blog.defaultProps = {
   data: {},
-  location: {},
 };
 
 export default blog;
@@ -156,7 +145,6 @@ export const pageQuery = graphql`
   query BlogPost($uri: String!) {
     craft {
       entry(uri: $uri) {
-        title
         ... on craft_Blog {
           title
           subheading
@@ -176,6 +164,11 @@ export const pageQuery = graphql`
           }
           postDate
           dateUpdated
+          uri
+          section {
+            name
+            handle
+          }
         }
       }
       globals {

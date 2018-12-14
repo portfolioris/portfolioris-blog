@@ -41,6 +41,9 @@ const Layout = ({ children }) => (
       return (
         <Fragment>
           <Helmet
+            htmlAttributes={{
+              lang: settings.siteLanguage,
+            }}
             titleTemplate={`%s • ${settings.siteName}`}
             defaultTitle={settings.siteName}
             meta={[
@@ -50,10 +53,10 @@ const Layout = ({ children }) => (
               { name: 'apple-mobile-web-app-capable', content: 'yes' },
               { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
             ]}
-          >
-            <html lang={settings.siteLanguage} />
-            <link rel="apple-touch-icon-precomposed" href="/icons/icon-512x512.png" />
-          </Helmet>
+            link={[
+              { rel: 'apple-touch-icon-precomposed', href: '/icons/icon-512x512.png' },
+            ]}
+          />
           <Navigation items={entries}>
             {children}
           </Navigation>
