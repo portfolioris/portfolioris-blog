@@ -46,7 +46,7 @@ const Header = ({
                 </div>
               </div>
             </div>
-            <div className="o-layout__fit  u-hidden@desk">
+            <div className="o-layout__fit  u-hidden@desktop">
               <MenuToggle
                 handleToggleMenu={handleToggleMenu}
                 isOpen={menuIsOpen}

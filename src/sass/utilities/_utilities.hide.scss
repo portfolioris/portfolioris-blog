@@ -10,9 +10,9 @@
 /**
  * Namespacing
  */
-$blocss-hidden-namespace: $blocss-namespace !default;
-$blocss-hidden-combined-namespace: #{$blocss-hidden-namespace}#{$blocss-namespace-utility} !default;
-$blocss-hidden-responsive-modifier: $blocss-responsive-modifier !default;
+//$blocss-hidden-namespace: $blocss-namespace !default;
+//$blocss-hidden-combined-namespace: #{$blocss-hidden-namespace}#{$blocss-namespace-utility} !default;
+//$blocss-hidden-responsive-modifier: $blocss-responsive-modifier !default;
 
 
 /**
@@ -25,7 +25,7 @@ $blocss-hidden-responsive-modifier: $blocss-responsive-modifier !default;
  * Note: the name of the breakpoint must exist in the list of `$breakpoints`
  *       in the Blocss defaults
  */
-$blocss-breakpoint-has-hidden: () !default;
+//$blocss-breakpoint-has-hidden: () !default;
 
 
 
@@ -33,9 +33,9 @@ $blocss-breakpoint-has-hidden: () !default;
     Functions and/or mixins used in this module
     ========================================================================= */
 
-@mixin blocss-hidden {
-  display: none;
-}
+//@mixin blocss-hidden {
+//  display: none;
+//}
 
 
 
@@ -43,20 +43,34 @@ $blocss-breakpoint-has-hidden: () !default;
     Core module
     ========================================================================= */
 
-.#{$blocss-hidden-combined-namespace}hidden {
-  @include blocss-hidden;
-}
+//.#{$blocss-hidden-combined-namespace}hidden {
+//  @include blocss-hidden;
+//}
 
 
 
 /*  Responsive
     ========================================================================= */
 
-@each $state in $blocss-breakpoint-has-hidden {
-  @include blocss-media-query(#{$state}) {
-    .#{$blocss-hidden-combined-namespace}hidden#{$blocss-hidden-responsive-modifier}#{$state} {
-      @include blocss-hidden;
+@if (variable-exists(mq-breakpoints)) {
+  @each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
+    @include mq($from: $inuit-bp-name) {
+      .u-hidden#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name} {
+        display: none !important;
+      }
+
+      .u-hidden-visually#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name} {
+        @include inuit-hidden-visually();
+      }
     }
   }
 }
+
+//@each $state in $blocss-breakpoint-has-hidden {
+//  @include blocss-media-query(#{$state}) {
+//    .u-hidden#{$inuit-widths-breakpoint-separator}#{$state} {
+//      @include blocss-hidden;
+//    }
+//  }
+//}
 
