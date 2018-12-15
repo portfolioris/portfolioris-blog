@@ -12,11 +12,16 @@
 
 .c-header {
   background-color: $black;
+  padding: $inuit-global-spacing-unit-tiny;
+  box-shadow: 0 0 $inuit-global-spacing-unit-small transparentize($black, 0.5);
   //padding: $blocss-space-tiny;
   //box-shadow: 0 0 $blocss-space-small transparentize($black, 0.5);
 }
 
 .c-header__logo {
+  margin-right: $inuit-global-spacing-unit-small;
+  width: $inuit-global-spacing-unit * 1.5;
+  height: $inuit-global-spacing-unit * 1.5;
   //margin-right: $blocss-space-small;
   //width: $blocss-space * 1.5;
   //height: $blocss-space * 1.5;

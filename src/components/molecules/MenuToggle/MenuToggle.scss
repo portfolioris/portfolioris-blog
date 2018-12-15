@@ -1,6 +1,7 @@
 @import "engine";
 
 .c-menu-toggle {
+  padding: $inuit-global-spacing-unit-tiny;
   //padding: $blocss-space-tiny;
   width: 32px;
   display: flex;
@@ -41,6 +42,7 @@
 }
 
 .c-menu-toggle__label {
+  @include inuit-font-size(10px, false);
   //@include blocss-font-size(10px, false);
 
   display: block;

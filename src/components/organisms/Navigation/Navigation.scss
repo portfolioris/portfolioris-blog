@@ -19,6 +19,7 @@ main {
   background-color: $white;
 
   &.is-open {
+    transform: translateX(calc(100% - #{$inuit-global-spacing-unit * 3 - $inuit-global-spacing-unit-tiny}));
     //transform: translateX(calc(100% - #{$blocss-space * 3 - $blocss-space-tiny}));
   }
 }
@@ -26,10 +27,12 @@ main {
 .c-body-wrap__navigation {
   left: 0;
   top: 0;
+  right: $inuit-global-spacing-unit-large;
   //right: $blocss-space-large;
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding-top: $inuit-global-spacing-unit * 3;
   //padding-top: $blocss-space * 3;
   transition: transform $base-transition-duration $base-timing-function;
 
