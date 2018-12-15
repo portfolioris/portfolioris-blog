@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
@@ -73,25 +73,16 @@ const blog = ({ data }) => {
   ];
 
   return (
-    <Layout>
+    <Layout
+      entry={entry}
+    >
       <Helmet>
         {/* Blog-specific meta tags */}
-        <title>{entry.title}</title>
-        <meta name="description" content={entry.description} />
-
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={entry.title} />
-        <meta property="og:description" content={entry.description} />
-        <meta property="og:url" content={`${globals.settings.domain}/${entry.uri}`} />
         <meta
           property="og:image"
           content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
         />
-        <meta property="og:site_name" content={globals.settings.siteName} />
-        <meta property="og:locale" content="nl_NL" />
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content={globals.settings.twitterHandle} />
         <meta name="twitter:image:alt" content={entry.mainImage[0].title} />
 
         <script type="application/ld+json">
