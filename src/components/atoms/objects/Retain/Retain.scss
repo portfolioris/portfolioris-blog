@@ -1,5 +1,5 @@
 /*  =========================================================================
-    Foundation.Atoms.Layout.Retain
+    Atoms.Objects.Retain
     ========================================================================= */
 
 /*  Imports
@@ -16,13 +16,12 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 1920px;
-  //padding-left: $blocss-space-small;
-  //padding-right: $blocss-space-small;
+  padding-left: $inuit-global-spacing-unit-small;
+  padding-right: $inuit-global-spacing-unit-small;
 }
 
-.o-retain--full {
-  padding-left: 0;
-  padding-right: 0;
+.o-retain--narrow {
+  max-width: 48em;
 }
 
 
@@ -30,32 +29,21 @@
 /*  Responsive
     ========================================================================= */
 
-//@include blocss-media-query(lap) {
-//  .o-retain,
-//  .o-retain--desk {
-//    padding-left: $blocss-space;
-//    padding-right: $blocss-space;
-//  }
-//
-//  .o-retain--full {
-//    padding-left: 0;
-//    padding-right: 0;
-//  }
-//}
-//
-//@include blocss-media-query(desk) {
-//  .o-retain,
-//  .o-retain--desk {
-//    padding-left: 9%;
-//    padding-right: 9%;
-//  }
-//
-//  .o-retain--narrow {
-//    max-width: 48em;
-//  }
-//
-//  .o-retain--full {
-//    padding-left: 0;
-//    padding-right: 0;
-//  }
-//}
+@include mq($from: tablet) {
+  .o-retain {
+    padding-left: $inuit-global-spacing-unit;
+    padding-right: $inuit-global-spacing-unit;
+  }
+}
+
+@include mq($from: desktop) {
+  .o-retain {
+    padding-left: 9%;
+    padding-right: 9%;
+  }
+}
+
+.o-retain--full {
+  padding-left: 0;
+  padding-right: 0;
+}

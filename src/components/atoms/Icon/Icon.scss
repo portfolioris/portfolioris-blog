@@ -10,85 +10,20 @@
 
 
 
-/*  Variables
-    ========================================================================= */
-
-$icon-base-size: 16px !default;
-
-
-
-/*  Functions/Mixins
-    ========================================================================= */
-
-
-
 /*  Module
     ========================================================================= */
 
 .c-icon {
   display: block;
-  width: $icon-base-size;
-  height: $icon-base-size;
-  fill: currentColor;
-}
-
-
-
-/*  Modifiers
-    ========================================================================= */
-
-.c-icon--inherit {
   width: 1em;
   height: 1em;
+  fill: currentColor;
 }
-
-
-
-.c-icon--inline {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-
-
-.c-icon--flip {
-  transform: scaleX(-1);
-}
-
-
 
 /**
  * Sizes
  */
-
 .c-icon--alpha {
   width: 75px;
   height: 75px;
-}
-
-.c-icon--beta {
-  width: $beta;
-  height: $beta;
-}
-
-.c-icon--gamma {
-  width: $gamma;
-  height: $gamma;
-}
-
-.c-icon--delta {
-  width: $delta;
-  height: $delta;
-}
-
-.c-icon--epsilon {
-  width: $epsilon;
-  height: $epsilon;
-}
-
-// zeta omitted
-
-.c-icon--milli {
-  width: $milli;
-  height: $milli;
 }

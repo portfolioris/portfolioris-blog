@@ -11,9 +11,6 @@
     redeclare that variable in this file.
     ========================================================================= */
 
-//$blocss-base-font-size: 16px;
-//$blocss-base-line-height: 28px;
-
 $inuit-global-font-size: 16px;
 $inuit-global-line-height: 28px;
 
@@ -24,18 +21,6 @@ $inuit-global-line-height: 28px;
     for your classes (e.g. `.classname@lap`), the second value is the media
     query that the breakpoint fires at.
     ========================================================================= */
-
-$lap: 580px;
-$desk: 980px;
-$wall: 1280px;
-
-//$blocss-breakpoints: (
-//  "palm": "(max-width: #{($lap - 1px) / $blocss-base-font-size * 1em})",
-//  "lap": "(min-width: #{$lap / $blocss-base-font-size * 1em})",
-//  "max-lap": "(max-width: #{($desk - 1) / $blocss-base-font-size * 1em})",
-//  "desk": "(min-width: #{$desk / $blocss-base-font-size * 1em})",
-//  "wall": "(min-width: #{$wall / $blocss-base-font-size * 1em})",
-//) !default;
 
 $mq-breakpoints: (
   tablet:  580px,
@@ -86,16 +71,13 @@ $gray-dark: #767676 !default;
 /*  Sizes
     ========================================================================= */
 
-//$normalis: $blocss-base-font-size !default;
-$macro: 64px !default;
-$mega: 50px !default;
-$alpha: 34px !default;
-$beta: 32px !default;
-$gamma: 26px !default;
-$delta: 22px !default;
-$epsilon: 18px !default;
-$milli: 14px !default;
-$micro: 12px !default;
+$inuit-font-size-h0:  64px !default;
+$inuit-font-size-h1:  34px !default;
+$inuit-font-size-h2:  28px !default;
+$inuit-font-size-h3:  24px !default;
+$inuit-font-size-h4:  20px !default;
+$inuit-font-size-h5:  18px !default;
+$inuit-font-size-h6:  16px !default;
 
 
 

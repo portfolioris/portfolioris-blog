@@ -20,14 +20,14 @@ const Heading = ({
   return React.createElement(
     `h${level}`,
     {
-      className: classNames(`u-heading  ${className}`, {
-        'u-macro': stylingLevel === 0,
-        'u-alpha': stylingLevel === 1,
-        'u-beta': stylingLevel === 2,
-        'u-gamma': stylingLevel === 3,
-        'u-delta': stylingLevel === 4,
-        'u-epsilon': stylingLevel === 5,
-        'u-foxtrot': stylingLevel === 6,
+      className: classNames(className, {
+        'u-h0': stylingLevel === 0,
+        'u-h1': stylingLevel === 1,
+        'u-h2': stylingLevel === 2,
+        'u-h3': stylingLevel === 3,
+        'u-h4': stylingLevel === 4,
+        'u-h5': stylingLevel === 5,
+        'u-h6': stylingLevel === 6,
         'u-heading--secondary': secondary,
       }),
     },
