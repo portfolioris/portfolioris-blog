@@ -79,7 +79,7 @@ class Navigation extends Component {
           id="navigation"
         >
           <Retain>
-            <ul className="o-list-clean">
+            <ul className="o-list-bare">
               {items.map(item => (
                 <li
                   key={item.id}

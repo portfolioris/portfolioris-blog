@@ -28,12 +28,10 @@ main {
   left: 0;
   top: 0;
   right: $inuit-global-spacing-unit-large;
-  //right: $blocss-space-large;
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding-top: $inuit-global-spacing-unit * 3;
-  //padding-top: $blocss-space * 3;
   transition: transform $base-transition-duration $base-timing-function;
 
   //@include blocss-media-query(lap) {
@@ -55,8 +53,8 @@ main {
 /*  Responsive
     ========================================================================= */
 
-//@include blocss-media-query(desk) {
-//  .c-body-wrap__navigation {
-//    display: none;
-//  }
-//}
+@include mq($from: desktop) {
+  .c-body-wrap__navigation {
+    display: none;
+  }
+}

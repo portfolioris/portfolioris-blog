@@ -298,6 +298,14 @@ $inuit-layout-breakpoint-separator: \@ !default;
   @include layout-fill;
 }
 
+/**
+ * Modifier: Make a cell center the remaining space
+ */
+.o-layout__center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 
 /*  Responsive

@@ -1,0 +1,10 @@
+/*  =========================================================================
+    Tools.Functions
+    ========================================================================= */
+
+/**
+ * A small, internally-used function to remove the units from a given value.
+ */
+@function strip-units ($number) {
+  @return $number / ($number * 0 + 1);
+}

@@ -3,52 +3,6 @@
     Hide content
     ========================================================================= */
 
-/*  Variables
-    Variables used in this module
-    ========================================================================= */
-
-/**
- * Namespacing
- */
-//$blocss-hidden-namespace: $blocss-namespace !default;
-//$blocss-hidden-combined-namespace: #{$blocss-hidden-namespace}#{$blocss-namespace-utility} !default;
-//$blocss-hidden-responsive-modifier: $blocss-responsive-modifier !default;
-
-
-/**
- * Define which namespaced breakpoints you would like to generate.
- * It allows you to only compile as much CSS as you need. All are empty by
- * default, but you can add breakpoints at will.
- *
- * $blocss-breakpoint-has-hidden:       ('lap', 'desk');
- *
- * Note: the name of the breakpoint must exist in the list of `$breakpoints`
- *       in the Blocss defaults
- */
-//$blocss-breakpoint-has-hidden: () !default;
-
-
-
-/*  Functions/Mixins
-    Functions and/or mixins used in this module
-    ========================================================================= */
-
-//@mixin blocss-hidden {
-//  display: none;
-//}
-
-
-
-/*  Module
-    Core module
-    ========================================================================= */
-
-//.#{$blocss-hidden-combined-namespace}hidden {
-//  @include blocss-hidden;
-//}
-
-
-
 /*  Responsive
     ========================================================================= */
 
@@ -63,14 +17,15 @@
         @include inuit-hidden-visually();
       }
     }
+
+    @include mq($until: $inuit-bp-name) {
+      .u-hidden#{$inuit-widths-breakpoint-separator}max-#{$inuit-bp-name} {
+        display: none !important;
+      }
+
+      .u-hidden-visually#{$inuit-widths-breakpoint-separator}max-#{$inuit-bp-name} {
+        @include inuit-hidden-visually();
+      }
+    }
   }
 }
-
-//@each $state in $blocss-breakpoint-has-hidden {
-//  @include blocss-media-query(#{$state}) {
-//    .u-hidden#{$inuit-widths-breakpoint-separator}#{$state} {
-//      @include blocss-hidden;
-//    }
-//  }
-//}
-

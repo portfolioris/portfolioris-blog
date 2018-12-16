@@ -32,15 +32,13 @@ const Header = ({
                   <Link
                     to="/"
                     href="/"
-                    className="c-header__logo-link"
                   >
                     <img src={logo} alt="Portfolioris" className="c-header__logo" />
-                    {/* <Logo className="c-header__logo" /> */}
-                    <span className="u-visually-hidden">Portfolioris</span>
+                    <span className="u-hidden-visually">Portfolioris</span>
                   </Link>
                 </div>
                 <div className="o-layout__fit  o-layout__center">
-                  <div className="u-hidden@max-lap">
+                  <div className="u-hidden@max-desktop">
                     <PrimaryNav items={items} activePageId={activePageId} />
                   </div>
                 </div>
