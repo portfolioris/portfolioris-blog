@@ -1,0 +1,15 @@
+/*  =========================================================================
+    utilities.typography.sizes
+    Describes font sizing.
+    ========================================================================= */
+
+/*  Sizes
+    ========================================================================= */
+
+.u-milli {
+  @include inuit-font-size($milli, inherit, $important: true);
+}
+
+.u-micro {
+  @include inuit-font-size($micro, inherit, $important: true);
+}

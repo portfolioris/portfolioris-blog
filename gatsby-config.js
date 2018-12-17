@@ -14,10 +14,10 @@ module.exports = {
           'src/sass',
           'node_modules',
         ],
-        postCssPlugins: [pxtorem({
-          propList: ['*'],
-          minPixelValue: 4,
-        })],
+        // postCssPlugins: [pxtorem({
+        //   propList: ['*'],
+        //   minPixelValue: 4,
+        // })],
       },
     },
     {

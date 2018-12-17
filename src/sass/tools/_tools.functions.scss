@@ -1,10 +1,63 @@
 /*  =========================================================================
-    Tools.Functions
+    tools.functions
     ========================================================================= */
+
+/*  Variables
+    ========================================================================= */
+
+$browser-context: $inuit-global-font-size !default;
+
+
+
+/*  Functions
+    ========================================================================= */
+
+/**
+ * Value to rem
+ */
+@function value-to-rem ($value) {
+  @if type-of($value) == string or unitless($value) == true or unit($value) == "em" or unit($value) == "%" {
+    @return $value;
+  } @else {
+    @return ($value/$browser-context*1rem);
+  }
+}
+
+
+/**
+ * Value to em
+ */
+@function value-to-em ($value, $context: $browser-context) {
+  @return ($value/$context*1em);
+}
+
 
 /**
  * A small, internally-used function to remove the units from a given value.
  */
 @function strip-units ($number) {
   @return $number / ($number * 0 + 1);
+}
+
+
+/*  =========================================================================
+    Mixins.Rem
+    Rem converter, converts `px` values to `rem` values
+    Sample: @include rem(margin, 0 auto 300px, !important);
+    ========================================================================= */
+
+@mixin rem ($property, $value, $append: "") {
+  /* Loop over values */
+  @if type-of($value) == list {
+    $all: ();
+
+    @for $i from 1 through length($value) {
+      $all: append($all, value-to-rem(nth($value, $i)));
+    }
+
+    #{$property}: $all #{$append};
+
+  } @else {
+    #{$property}: value-to-rem($value) #{$append};
+  }
 }

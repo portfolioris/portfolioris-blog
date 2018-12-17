@@ -8,13 +8,11 @@
     Global & project specific variables & config switches
     ========================================================================= */
 
-@import "vars";
-
 @import "settings/settings.config";
 
 @import "~inuitcss/settings/settings.core";
 
-//@import "settings/settings.global";
+@import "settings/settings.global";
 
 
 

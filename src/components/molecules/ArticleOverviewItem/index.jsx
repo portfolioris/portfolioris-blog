@@ -49,9 +49,9 @@ class ArticleOverviewItem extends Component {
           level={3}
           stylingLevel={4}
           href={uri}
-          className="u-mb--tiny"
+          className="u-margin-bottom-tiny"
         />
-        <p className="u-micro  u-bold  u-mb--tiny">
+        <p className="u-micro  u-text-bold  u-margin-bottom-tiny">
           {subheading}
         </p>
         <p className="u-micro">

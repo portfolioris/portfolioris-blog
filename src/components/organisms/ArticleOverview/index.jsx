@@ -35,11 +35,11 @@ const ArticleOverview = ({
           <Layer>
             <Retain>
               <Heading text={heading} level={2} stylingLevel={1} />
-              <ul className="o-layout  o-layout--gutter-small">
+              <ul className="o-layout">
                 {craft.entries.map(item => (
                   <li
                     key={item.id}
-                    className="o-layout__cell  u-fraction--6of12@lap  u-fraction--4o12@desk"
+                    className="u-1/2@tablet  u-1/3@desktop"
                   >
                     <ArticleOverviewItem
                       {...item}
