@@ -1,0 +1,57 @@
+/*  =========================================================================
+    Leading
+    Global styles that can be used throughout the platform
+    ========================================================================= */
+
+@import "engine";
+
+
+// GENERIC
+@import "~inuitcss/generic/generic.box-sizing";
+
+/* stylelint-disable-next-line at-rule-no-unknown, scss/at-rule-no-unknown */
+@import-normalize; /* [1] */
+
+@import "~inuitcss/generic/generic.reset";
+
+@import "~inuitcss/generic/generic.shared";
+
+@import "generic/toplevel";
+
+@import "generic/typography";
+
+
+
+// ELEMENTS
+@import "~inuitcss/elements/elements.page";
+
+@import "~inuitcss/elements/elements.headings";
+
+@import "~inuitcss/elements/elements.images";
+
+
+// OBJECTS
+@import "objects/objects.layout";
+
+@import "~inuitcss/objects/objects.list-bare";
+//
+//@import "~inuitcss/objects/objects.box";
+//
+//@import "~inuitcss/objects/objects.block";
+//
+//@import "~inuitcss/objects/objects.table";
+
+
+
+// UTILITIES
+@import "~inuitcss/utilities/utilities.widths";
+
+@import "~inuitcss/utilities/utilities.headings";
+
+@import "~inuitcss/utilities/utilities.spacings";
+
+@import "~inuitcss/utilities/utilities.hide";
+
+@import "utilities/utilities.hide";
+
+@import "utilities/utilities.sizes";

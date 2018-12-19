@@ -7,9 +7,9 @@
     ========================================================================= */
 
 .u-milli {
-  @include inuit-font-size($milli, inherit, $important: true);
+  @include supple-font-size($milli, $important: true);
 }
 
 .u-micro {
-  @include inuit-font-size($micro, inherit, $important: true);
+  @include supple-font-size($micro, $important: true);
 }

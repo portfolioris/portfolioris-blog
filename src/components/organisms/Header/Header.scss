@@ -12,13 +12,13 @@
 
 .c-header {
   background-color: $black;
-  padding: $inuit-global-spacing-unit-tiny;
-  box-shadow: 0 0 $inuit-global-spacing-unit-small transparentize($black, 0.5);
+  padding: $supple-space-tiny;
+  box-shadow: 0 0 $supple-space-small transparentize($black, 0.5);
 }
 
 .c-header__logo {
-  margin-right: $inuit-global-spacing-unit-small;
-  width: $inuit-global-spacing-unit * 1.5;
-  height: $inuit-global-spacing-unit * 1.5;
+  margin-right: $supple-space-small;
+  width: $supple-space * 1.5;
+  height: $supple-space * 1.5;
   display: block;
 }

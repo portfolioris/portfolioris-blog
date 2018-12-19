@@ -34,17 +34,17 @@ const Header = ({
                     href="/"
                   >
                     <img src={logo} alt="Portfolioris" className="c-header__logo" />
-                    <span className="u-hidden-visually">Portfolioris</span>
+                    <span className="u-visually-hidden">Portfolioris</span>
                   </Link>
                 </div>
                 <div className="o-layout__fit  o-layout__center">
-                  <div className="u-hidden@max-desktop">
+                  <div className="u-hidden@max-lap">
                     <PrimaryNav items={items} activePageId={activePageId} />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="o-layout__fit  u-hidden@desktop">
+            <div className="o-layout__fit  u-hidden@desk">
               <MenuToggle
                 handleToggleMenu={handleToggleMenu}
                 isOpen={menuIsOpen}

@@ -21,7 +21,7 @@ h6 {
   font-family: $font-family-secondary;
   line-height: 0.9;
   font-weight: bold;
-  margin-bottom: $inuit-global-spacing-unit-small;
+  margin-bottom: $supple-space-small;
 
   a {
     color: $black;
@@ -42,7 +42,7 @@ h6 {
 
 
 .u-h0 {
-  @include inuit-font-size($inuit-font-size-h0);
+  @include supple-font-size($inuit-font-size-h0);
 }
 
 

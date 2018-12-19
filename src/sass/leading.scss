@@ -1,57 +1,38 @@
-/*  =========================================================================
-    Leading
-    Global styles that can be used throughout the platform
-    ========================================================================= */
-
 @import "engine";
 
-
-// GENERIC
-@import "~inuitcss/generic/generic.box-sizing";
-
+/* Generic */
 /* stylelint-disable-next-line at-rule-no-unknown, scss/at-rule-no-unknown */
 @import-normalize; /* [1] */
 
-@import "~inuitcss/generic/generic.reset";
+@import "~supple/lib/generic/reset";
 
-@import "~inuitcss/generic/generic.shared";
-
+/* Elements */
 @import "generic/toplevel";
 
 @import "generic/typography";
 
+@import "~supple/lib/elements/headings";
 
+@import "elements/links";
 
-// ELEMENTS
-@import "~inuitcss/elements/elements.page";
+/* Objects */
+@import "~supple/lib/objects/list-clean";
 
-@import "~inuitcss/elements/elements.headings";
+@import "~supple/lib/objects/layout";
 
-@import "~inuitcss/elements/elements.images";
+@import "~supple/lib/objects/flexembed";
 
+/* Utilities */
+@import "~supple/lib/utilities/fractions";
 
-// OBJECTS
-@import "objects/objects.layout";
+@import "~supple/lib/utilities/module";
 
-@import "~inuitcss/objects/objects.list-bare";
-//
-//@import "~inuitcss/objects/objects.box";
-//
-//@import "~inuitcss/objects/objects.block";
-//
-//@import "~inuitcss/objects/objects.table";
+@import "~supple/lib/utilities/visually-hidden";
 
+@import "~supple/lib/utilities/hidden";
 
+@import "~supple/lib/utilities/spacing";
 
-// UTILITIES
-@import "~inuitcss/utilities/utilities.widths";
-
-@import "~inuitcss/utilities/utilities.headings";
-
-@import "~inuitcss/utilities/utilities.spacings";
-
-@import "~inuitcss/utilities/utilities.hide";
-
-@import "utilities/utilities.hide";
+@import "utilities/text";
 
 @import "utilities/utilities.sizes";

@@ -8,26 +8,41 @@
     Global & project specific variables & config switches
     ========================================================================= */
 
-@import "settings/settings.config";
+/* Settings */
+@import "~supple/lib/settings/defaults";
 
-@import "~inuitcss/settings/settings.core";
+@import "~supple/lib/settings/responsive";
 
-@import "settings/settings.global";
+@import "vars";
 
-
-
-/*  Tools
-    Default mixins & functions
-    ========================================================================= */
-
-@import "~inuitcss/tools/tools.font-size";
-
-@import "~inuitcss/tools/tools.clearfix";
-
-@import "~inuitcss/tools/tools.hidden";
-
+/* Tools */
 @import "~sass-mq/mq";
 
-@import "tools/tools.aliases";
+@import "~supple/lib/tools/functions";
 
-@import "tools/tools.functions";
+@import "~supple/lib/tools/mixins";
+
+//
+//@import "settings/settings.config";
+//
+//@import "~inuitcss/settings/settings.core";
+//
+//@import "settings/settings.global";
+//
+//
+//
+///*  Tools
+//    Default mixins & functions
+//    ========================================================================= */
+//
+//@import "~inuitcss/tools/tools.font-size";
+//
+//@import "~inuitcss/tools/tools.clearfix";
+//
+//@import "~inuitcss/tools/tools.hidden";
+//
+//@import "~sass-mq/mq";
+//
+//@import "tools/tools.aliases";
+//
+//@import "tools/tools.functions";

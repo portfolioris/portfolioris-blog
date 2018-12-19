@@ -79,13 +79,13 @@
 $min_width: 980; /* 2 */
 $max_width: 1920;
 
-$min_font: strip-units($inuit-global-font-size); /* 3 */
-$max_font: strip-units($inuit-global-font-size + 8px);
+$min_font: supple-strip-units($supple-font-size); /* 3 */
+$max_font: supple-strip-units($supple-font-size + 8px);
 
 :root {
   font-size: #{($min_font/16) * 1em};
 
-  @include mq($from: desktop) {
+  @include supple-mq(desk) {
     font-size: #{($min_font/16) * 1em};
   }
 }

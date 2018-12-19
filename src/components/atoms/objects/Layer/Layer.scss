@@ -19,23 +19,23 @@
     ========================================================================= */
 
 .o-layer--tiny {
-  padding: $inuit-global-spacing-unit-tiny 0;
+  padding: $supple-space-tiny 0;
 }
 
 .o-layer--small {
-  padding: $inuit-global-spacing-unit-small 0;
+  padding: $supple-space-small 0;
 }
 
 .o-layer--medium {
-  padding: $inuit-global-spacing-unit 0 0;
+  padding: $supple-space 0 0;
 }
 
 .o-layer--large {
-  padding: $inuit-global-spacing-unit 0 0;
+  padding: $supple-space 0 0;
 }
 
 .o-layer--huge {
-  padding: $inuit-global-spacing-unit*2 0 $inuit-global-spacing-unit 0;
+  padding: $supple-space*2 0 $supple-space 0;
 }
 
 .o-layer--flat {
@@ -61,13 +61,13 @@
 /*  Responsive
     ========================================================================= */
 
-@include mq($from: desktop) {
+@include supple-mq(desk) {
   .o-layer--large {
-    padding: $inuit-global-spacing-unit*2 0 $inuit-global-spacing-unit*1;
+    padding: $supple-space*2 0 $supple-space*1;
   }
 
   .o-layer--huge {
-    padding: $inuit-global-spacing-unit*4 0 $inuit-global-spacing-unit*3;
+    padding: $supple-space*4 0 $supple-space*3;
   }
 }
 

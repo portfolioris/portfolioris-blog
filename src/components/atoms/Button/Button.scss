@@ -17,13 +17,12 @@ $c-button--transition-duration: $base-transition-duration-short !default;
 
 $c-button--states: "&:hover, &:active, &:focus, &.is-active" !default;
 
-//$c-button--space: $blocss-space !default;
-$c-button--space: $inuit-global-spacing-unit !default;
+$c-button--space: $supple-space !default;
 
 
 // Default settings
-$c-button--space-vertical: $inuit-global-spacing-unit-small !default;
-$c-button--space-horizontal: $inuit-global-spacing-unit-small !default;
+$c-button--space-vertical: $supple-space-small !default;
+$c-button--space-horizontal: $supple-space-small !default;
 $c-button--icon-offset: $c-button--space !default;
 $c-button--icon-animation-offset: 10px !default;
 

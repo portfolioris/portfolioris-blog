@@ -6348,13 +6348,6 @@ intl-relativeformat@^2.1.0:
   dependencies:
     intl-messageformat "^2.0.0"
 
-inuitcss@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/inuitcss/-/inuitcss-6.0.0.tgz#164a2557736a29a9874f99c6165174d996ea6a53"
-  integrity sha512-FnyXNy2WSzSli4INmgtrsFwkzDljabK583AoC7KZutB6m8bVrAzjZ7jadro4N4RcqQRpMlW88NwgHIWgD7CDrg==
-  dependencies:
-    sass-mq "^3.3.2"
-
 invariant@^2.1.1, invariant@^2.2.0, invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -10696,10 +10689,10 @@ sass-loader@^7.0.1:
     pify "^3.0.0"
     semver "^5.5.0"
 
-sass-mq@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-3.3.2.tgz#3472e04c31a432bcd55b3b604edc72ae9a4def1a"
-  integrity sha1-NHLgTDGkMrzVWztgTtxyrppN7xo=
+sass-mq@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-5.0.0.tgz#7e8a8eb0f289591b3521549266f0ff923772809d"
+  integrity sha512-GCN6wGY+l4n10mASeMe2vqISvEEFjv6/NVcywaMU9saZgzw+DKM+fUUAnv07LlxXvDdnHSRf5jGJ10u/iF1BKA==
 
 sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"
@@ -11626,6 +11619,13 @@ sugarss@^2.0.0:
   integrity sha512-WfxjozUk0UVA4jm+U1d736AUpzSrNsQcIbyOkoE364GrtWmIrFdk5lksEupgWMD4VaT/0kVx1dobpiDumSgmJQ==
   dependencies:
     postcss "^7.0.2"
+
+supple@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/supple/-/supple-2.0.2.tgz#2026e9f8a826dae0b317ff425a916e5cdd07d05d"
+  integrity sha512-RfsbCt/U+KvN8Ujtd89LZfwfe6TA3m34istOmnmKkKCkJWX6w8qUqpWjwmLRv8FoNXPQnezCivtmMtSVwHJL/g==
+  dependencies:
+    sass-mq "^5.0.0"
 
 supports-color@^2.0.0:
   version "2.0.0"
