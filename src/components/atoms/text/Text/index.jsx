@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from 'components/atoms/text/CodeBlock';
+import ParagraphBlock from 'components/atoms/text/ParagraphBlock';
 import ImageBlock from 'components/atoms/text/ImageBlock';
 
 import './Text.scss';
-import ParagraphBlock from '../ParagraphBlock';
 
 const Text = ({
   text,
@@ -17,8 +17,8 @@ const Text = ({
   React.createElement(
     type === 'md' ? ReactMarkdown : 'div',
     {
-      className: classNames('c-rte  u-module  u-m-b', className, {
-        'u-epsilon  c-rte--intro  u-bold': modifier === 'intro',
+      className: classNames(className, {
+        'u-module  u-m-b  u-epsilon  u-text-bold': modifier === 'intro',
       }),
       source: type === 'md' ? text : null,
       renderers: type === 'md' ? {

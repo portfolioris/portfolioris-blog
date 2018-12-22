@@ -89,35 +89,38 @@ const blog = ({ data }) => {
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
       </Helmet>
-      <Layer>
-        <Retain size="narrow">
-          <Heading
-            text={entry.title}
-            level={1}
-            stylingLevel={0}
-          />
-          <Text
-            text={entry.subheading}
-            type="md"
-            modifier="intro"
-            className="u-m-b-small"
-          />
-          <p className="u-micro">
-            {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
-            <DateString dateString={entry.postDate} />
-          </p>
-        </Retain>
-      </Layer>
-      <Layer
-        collapseTop
-      >
-        <Retain size="narrow">
-          <Text
-            text={entry.richText}
-            type="md"
-          />
-        </Retain>
-      </Layer>
+      <article>
+        <Layer>
+          <header>
+            <Retain size="narrow">
+              <Heading
+                text={entry.title}
+                level={1}
+                stylingLevel={0}
+                className="u-m-b-none"
+              />
+              <Text
+                text={entry.subheading}
+                type="md"
+                modifier="intro"
+                className="u-m-b-none"
+              />
+              <p className="u-micro">
+                {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
+                <DateString dateString={entry.postDate} />
+              </p>
+            </Retain>
+          </header>
+        </Layer>
+        <Layer collapseTop>
+          <Retain size="narrow">
+            <Text
+              text={entry.richText}
+              type="md"
+            />
+          </Retain>
+        </Layer>
+      </article>
     </Layout>
   );
 };
