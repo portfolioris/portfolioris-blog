@@ -33,11 +33,6 @@ h6 {
       color: $green;
     }
   }
-
-  b,
-  strong {
-    color: $green;
-  }
 }
 
 
@@ -58,8 +53,9 @@ h6 {
   h5,
   h6 {
     &,
+    span,
     a {
-      color: $white;
+      //color: $white;
     }
   }
 }

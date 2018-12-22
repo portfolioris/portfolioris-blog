@@ -23,7 +23,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: 0 0 blocss-value-to-rem($blocss-space) transparentize($black, 0.8);
+    box-shadow: 0 0 supple-value-to-rem($supple-space) transparentize($black, 0.8);
     opacity: 0;
     transition: opacity $base-transition-duration $base-timing-function;
   }
@@ -31,7 +31,7 @@
 
 
 .c-case-overview-item__image {
-  height: $blocss-space * 6;
+  height: $supple-space * 6;
   overflow: hidden;
   width: 100%;
 
@@ -47,10 +47,10 @@
 
 
 .c-case-overview-item__logo {
-  height: $blocss-space * 3;
-  margin-top: -$blocss-space * 1.5;
+  height: $supple-space * 3;
+  margin-top: -$supple-space * 1.5;
   background-color: $white;
-  padding: $blocss-space-tiny;
+  padding: $supple-space-tiny;
   display: inline-block;
   position: relative;
   z-index: 1;

@@ -37,15 +37,15 @@ const ImageBlock = props => (
       );
       const Img = craft.assets.find(asset => asset.id === imgId);
       return (
-        <figure className="c-text__figure  u-mb">
+        <figure className="c-text__figure  u-m-b">
           <img
             data-sizes="auto"
-            className="lazyload  c-rte__img"
+            className="lazyload  c-text__img"
             data-src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_{width}/${Img.folder.path}${Img.filename}`}
             src={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_100/${Img.folder.path}${Img.filename}`}
             alt={Img.title}
           />
-          <figcaption className="u-bold  u-milli  u-italic">{props.alt}</figcaption>
+          <figcaption className="u-text-bold  u-milli  u-text-italic">{props.alt}</figcaption>
         </figure>
       );
     }}

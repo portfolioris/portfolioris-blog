@@ -41,6 +41,11 @@
     padding-left: 9%;
     padding-right: 9%;
   }
+
+  .o-retain--breakout {
+    padding-left: calc(9% - #{supple-value-to-rem($supple-space)});
+    padding-right: calc(9% - #{supple-value-to-rem($supple-space)});
+  }
 }
 
 .o-retain--full {

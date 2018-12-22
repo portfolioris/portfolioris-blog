@@ -11,7 +11,7 @@ const Footer = () => (
         <div className="u-milli">
           <div className="o-layout  o-layout--gutter-small">
             <div className="o-layout__cell  o-layout__cell--fit">
-              <Text richText="© Portfolioris 2018" className="u-mb-flatten" />
+              <Text richText="© Portfolioris 2018" className="u-m-b-none" />
             </div>
             {/*
             <div className="o-layout__cell  o-layout__cell--fit">

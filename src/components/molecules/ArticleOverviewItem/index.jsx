@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { push } from 'gatsby';
 import Heading from 'components/atoms/text/Heading';
 import DateString from 'components/atoms/text/DateString';
+import Theme from 'components/atoms/utilities/Theme';
 
 class ArticleOverviewItem extends Component {
   constructor(props) {
@@ -37,27 +38,29 @@ class ArticleOverviewItem extends Component {
     } = this.state;
 
     return (
-      <article
-        className={classNames('u-mb', {
-          'is-link': isLoaded,
-        })}
-        onClick={e => this.handleClick(e)}
-        role="presentation"
-      >
-        <Heading
-          text={title}
-          level={3}
-          stylingLevel={4}
-          href={uri}
-          className="u-margin-bottom-tiny"
-        />
-        <p className="u-micro  u-text-bold  u-margin-bottom-tiny">
-          {subheading}
-        </p>
-        <p className="u-micro">
-          <DateString dateString={postDate} />
-        </p>
-      </article>
+      <Theme color="white">
+        <article
+          className={classNames('u-module  u-p', {
+            'as-clickable': isLoaded,
+          })}
+          onClick={e => this.handleClick(e)}
+          role="presentation"
+        >
+          <Heading
+            text={title}
+            level={3}
+            stylingLevel={4}
+            href={uri}
+            className="u-m-b-tiny"
+          />
+          <p className="u-micro  u-text-bold  u-m-b-tiny">
+            {subheading}
+          </p>
+          <p className="u-micro">
+            <DateString dateString={postDate} />
+          </p>
+        </article>
+      </Theme>
     );
   }
 }

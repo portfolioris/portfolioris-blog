@@ -22,10 +22,11 @@
 html {
   font-family: $font-family-primary;
   color: $black;
+  text-decoration-skip-ink: auto;
 }
 
-abbr[title] {
-  text-decoration: none;
+body {
+  margin: 0;
 }
 
 hr {

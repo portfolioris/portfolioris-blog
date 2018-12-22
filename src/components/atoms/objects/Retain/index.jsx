@@ -8,6 +8,7 @@ const Retain = ({ size, children }) => (
   <div className={classNames('o-retain', {
     'o-retain--full': size === 'full',
     'o-retain--narrow': size === 'narrow',
+    'o-retain--breakout': size === 'breakout',
   })}
   >
     {children}

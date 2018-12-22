@@ -9,11 +9,15 @@
     ========================================================================= */
 
 /* Settings */
+
+@import "vars";
+
 @import "~supple/lib/settings/defaults";
 
 @import "~supple/lib/settings/responsive";
 
-@import "vars";
+
+
 
 /* Tools */
 @import "~sass-mq/mq";

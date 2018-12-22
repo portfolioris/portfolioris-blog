@@ -7,13 +7,12 @@
     $OVERRIDES
     Any variables you find set in Blocss that you do not wish to keep, simply
     redefine here. This means that if Blocss sets your
-    `$blocss-base-font-size` at 16px and you wish it to be 14px, simply
+    `supple-base-font-size` at 16px and you wish it to be 14px, simply
     redeclare that variable in this file.
     ========================================================================= */
 
 $supple-font-size: 16px;
 $supple-line-height: 30px;
-
 
 
 /*  Responsive
@@ -23,7 +22,7 @@ $supple-line-height: 30px;
     ========================================================================= */
 
 $mq-breakpoints: (
-  lap:  580px,
+  lap: 580px,
   desk: 980px,
   wall: 1280px,
 );
@@ -36,7 +35,20 @@ $supple-fractions-delimiter: '\\/' !default;
 //$blocss-breakpoint-has-layout-fit: ("lap", "desk");
 //$blocss-breakpoint-has-layout-fill: ("lap", "desk");
 //$blocss-breakpoint-has-visually-hidden: ("palm", "max-lap", "lap", "desk");
-//$blocss-breakpoint-has-hidden: ("palm", "max-lap", "lap", "desk");
+$supple-breakpoint-has-hidden: (from: desk, until: desk);
+
+$supple-spacing-properties: (
+  'p': 'padding',
+  'm': 'margin',
+);
+
+$supple-spacing-directions: (
+  null: null,
+  '-t': '-top',
+  '-r': '-right',
+  '-b': '-bottom',
+  '-l': '-left',
+) !default;
 
 
 
@@ -73,13 +85,13 @@ $gray-dark: #767676 !default;
 /*  Sizes
     ========================================================================= */
 
-$inuit-font-size-h0:  64px !default;
-$inuit-font-size-h1:  34px !default;
-$inuit-font-size-h2:  28px !default;
-$inuit-font-size-h3:  24px !default;
-$inuit-font-size-h4:  20px !default;
-$inuit-font-size-h5:  18px !default;
-$inuit-font-size-h6:  16px !default;
+$inuit-font-size-h0: 64px !default;
+$inuit-font-size-h1: 34px !default;
+$inuit-font-size-h2: 28px !default;
+$inuit-font-size-h3: 24px !default;
+$inuit-font-size-h4: 20px !default;
+$inuit-font-size-h5: 18px !default;
+$inuit-font-size-h6: 16px !default;
 $milli: 14px;
 $micro: 12px;
 

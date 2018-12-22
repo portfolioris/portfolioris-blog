@@ -83,7 +83,7 @@ class Navigation extends Component {
               {items.map(item => (
                 <li
                   key={item.id}
-                  className="u-mb--tiny"
+                  className="u-m-b-tiny"
                 >
                   <Button
                     // isActive={item.object_id === activePageId}

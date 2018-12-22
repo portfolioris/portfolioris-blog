@@ -2,7 +2,8 @@
     Link
     ========================================================================= */
 
-a {
+a,
+.as-link {
   outline: none;
   text-decoration: none;
   color: $green;
@@ -10,8 +11,14 @@ a {
   font-weight: bold;
 
   #{$global-interaction-states} {
-    color: $black;
+    text-decoration: underline;
   }
+}
+
+a,
+.as-link,
+.as-clickable {
+  cursor: pointer;
 }
 
 
@@ -23,6 +30,14 @@ a {
   a {
     #{$global-interaction-states} {
       color: $white;
+    }
+  }
+}
+
+.t-color--dark {
+  a {
+    #{$global-interaction-states} {
+      color: initial;
     }
   }
 }

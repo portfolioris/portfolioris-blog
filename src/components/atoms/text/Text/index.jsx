@@ -17,7 +17,7 @@ const Text = ({
   React.createElement(
     type === 'md' ? ReactMarkdown : 'div',
     {
-      className: classNames('c-rte  u-module  u-mb', className, {
+      className: classNames('c-rte  u-module  u-m-b', className, {
         'u-epsilon  c-rte--intro  u-bold': modifier === 'intro',
       }),
       source: type === 'md' ? text : null,

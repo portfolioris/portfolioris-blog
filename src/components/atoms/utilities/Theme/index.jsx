@@ -11,7 +11,7 @@ const Theme = ({
 }) => (
   <div className={classNames(className, {
     // colors and backgrounds
-    // 't-bg--white': color === 'white',
+    't-bg--white  t-color--dark': color === 'white',
     't-bg--black  t-color--light': color === 'black',
   })}
   >

@@ -111,7 +111,7 @@ $c-button--disabled-background-color: $gray-light !default;
 .c-button__inner {
   display: inline-flex;
   align-items: stretch;
-  //line-height: $blocss-line-height-ratio; /* [1] */
+  line-height: $supple-line-height-ratio; /* [1] */
 }
 
 .c-button__label {

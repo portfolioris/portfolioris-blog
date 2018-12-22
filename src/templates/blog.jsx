@@ -100,7 +100,7 @@ const blog = ({ data }) => {
             text={entry.subheading}
             type="md"
             modifier="intro"
-            className="u-mb--small"
+            className="u-m-b-small"
           />
           <p className="u-micro">
             {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
