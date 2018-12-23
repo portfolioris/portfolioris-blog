@@ -132,10 +132,12 @@ Blog.defaultProps = {
 
 export default Blog;
 
-export const pageQuery = graphql`
+export const blogPageQuery = graphql`
   query BlogPost($uri: String!) {
     craft {
       entry(uri: $uri) {
+        id
+        title
         ... on craft_Blog {
           title
           subheading

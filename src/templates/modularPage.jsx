@@ -41,15 +41,13 @@ export const pageQuery = graphql`
   query modularPage($uri: String!) {
     craft {
       entry(uri: $uri) {
+        id
+        title
         ... on craft_ModularPage {
-          id
-          title
           description
-          ... on craft_ModularPage {
-            modules {
-              typeName: __typename
-              ...articleOverviewFragment
-            }
+          modules {
+            typeName: __typename
+            ...articleOverviewFragment
           }
         }
       }
