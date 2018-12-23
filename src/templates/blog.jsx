@@ -10,7 +10,7 @@ import Text from 'components/atoms/text/Text';
 import Heading from 'components/atoms/text/Heading';
 import DateString from 'components/atoms/text/DateString';
 
-const blog = ({ data }) => {
+const Blog = ({ data }) => {
   const {
     craft: {
       entry,
@@ -55,7 +55,7 @@ const blog = ({ data }) => {
       headline: entry.title,
       image: {
         '@type': 'ImageObject',
-        url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
+        // url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
       },
       description: entry.description,
       author: {
@@ -76,15 +76,12 @@ const blog = ({ data }) => {
     <Layout
       entry={entry}
     >
-      <Helmet>
-        {/* Blog-specific meta tags */}
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:image"
-          content={`https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`}
-        />
-        <meta name="twitter:image:alt" content={entry.mainImage[0].title} />
-
+      <Helmet
+        meta={[
+          // blog-specific meta tags
+          { property: 'og:type', content: 'article' },
+        ]}
+      >
         <script type="application/ld+json">
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
@@ -125,15 +122,15 @@ const blog = ({ data }) => {
   );
 };
 
-blog.propTypes = {
+Blog.propTypes = {
   data: PropTypes.objectOf(PropTypes.any),
 };
 
-blog.defaultProps = {
+Blog.defaultProps = {
   data: {},
 };
 
-export default blog;
+export default Blog;
 
 export const pageQuery = graphql`
   query BlogPost($uri: String!) {

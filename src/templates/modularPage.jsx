@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import Layout from 'components/organisms/Layout';
 import ArticleOverview from 'components/organisms/ArticleOverview';
 
-const blog = ({ data }) => {
+const ModularPage = ({ data }) => {
   const {
     craft: {
       entry,
@@ -27,15 +27,15 @@ const blog = ({ data }) => {
   );
 };
 
-blog.propTypes = {
+ModularPage.propTypes = {
   data: PropTypes.objectOf(PropTypes.any),
 };
 
-blog.defaultProps = {
+ModularPage.defaultProps = {
   data: {},
 };
 
-export default blog;
+export default ModularPage;
 
 export const pageQuery = graphql`
   query modularPage($uri: String!) {

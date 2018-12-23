@@ -28,7 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       pages.forEach((entry) => {
         switch (entry.section.handle) {
-          case 'blog':
+          case 'ModularPage':
           case 'modularPage':
             createPage({
               path: entry.uri === '__home__' ? '/' : entry.uri,
