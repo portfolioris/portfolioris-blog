@@ -51,6 +51,61 @@ const Layout = ({
         pageImg.alt = '';
       }
 
+      const schemaOrgJSONLD = [
+        {
+          '@context': 'http://schema.org',
+          '@type': 'WebSite',
+          url: settings.domain,
+          name: settings.siteName,
+        },
+        // todo: make specific for blog
+        // {
+        //   '@context': 'http://schema.org',
+        //   '@type': 'BreadcrumbList',
+        //   itemListElement: [
+        //     {
+        //       '@type': 'ListItem',
+        //       position: 1,
+        //       item: {
+        //         '@id': `${settings.domain}/${entry.section.handle}`,
+        //         name: entry.section.name,
+        //       },
+        //     },
+        //     {
+        //       '@type': 'ListItem',
+        //       position: 2,
+        //       item: {
+        //         '@id': `${settings.domain}/${entry.uri}`,
+        //         name: entry.title,
+        //       },
+        //     },
+        //   ],
+        // },
+        {
+          '@context': 'http://schema.org',
+          '@type': 'BlogPosting',
+          url: `${settings.domain}${entry.uri}`,
+          name: entry.title,
+          headline: entry.title,
+          image: {
+            '@type': 'ImageObject',
+            // url: `path`, // todo
+          },
+          description: entry.description,
+          author: {
+            '@type': 'Person',
+            name: `${entry.author.firstName} ${entry.author.lastName}`,
+          },
+          datePublished: new Date(entry.postDate * 1000).toISOString().split('T')[0],
+          dateModified: new Date(entry.dateUpdated * 1000).toISOString().split('T')[0],
+          publisher: {
+            '@type': 'Person',
+            name: `${entry.author.firstName} ${entry.author.lastName}`,
+          },
+          mainEntityOfPage: `${settings.domain}/${entry.uri}`,
+        },
+      ];
+
       return (
         <Fragment>
           <Helmet
@@ -83,7 +138,11 @@ const Layout = ({
             link={[
               { rel: 'apple-touch-icon-precomposed', href: '/icons/icon-512x512.png' },
             ]}
-          />
+          >
+            <script type="application/ld+json">
+              {JSON.stringify(schemaOrgJSONLD)}
+            </script>
+          </Helmet>
           <Navigation items={entries}>
             {children}
           </Navigation>

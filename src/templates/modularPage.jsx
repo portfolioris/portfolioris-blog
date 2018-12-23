@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -13,17 +13,15 @@ const ModularPage = ({ data }) => {
   } = data;
 
   return (
-    <Fragment>
-      <Layout
-        entry={entry}
-      >
-        {entry.modules.map(item => (
-          item.typeName === 'craft_ModulesBlogOverview' ? (
-            <ArticleOverview key={item.id} {...item} />
-          ) : null
-        ))}
-      </Layout>
-    </Fragment>
+    <Layout
+      entry={entry}
+    >
+      {entry.modules.map(item => (
+        item.typeName === 'craft_ModulesBlogOverview' ? (
+          <ArticleOverview key={item.id} {...item} />
+        ) : null
+      ))}
+    </Layout>
   );
 };
 
@@ -37,7 +35,7 @@ ModularPage.defaultProps = {
 
 export default ModularPage;
 
-export const pageQuery = graphql`
+export const modularPageQuery = graphql`
   query modularPage($uri: String!) {
     craft {
       entry(uri: $uri) {
@@ -51,11 +49,25 @@ export const pageQuery = graphql`
               ...articleOverviewFragment
             }
           }
+          author {
+            twitterHandle
+            firstName
+            lastName
+          }
+          postDate
+          dateUpdated
+          uri
+          section {
+            name
+            handle
+          }
         }
       }
       globals {
         settings {
           siteName
+          twitterHandle
+          domain
         }
       }
     }

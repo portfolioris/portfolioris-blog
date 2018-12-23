@@ -14,63 +14,8 @@ const Blog = ({ data }) => {
   const {
     craft: {
       entry,
-      globals,
     },
   } = data;
-
-  const schemaOrgJSONLD = [
-    {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      url: globals.settings.domain,
-      name: globals.settings.siteName,
-    },
-    {
-      '@context': 'http://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          item: {
-            '@id': `${globals.settings.domain}/${entry.section.handle}`,
-            name: entry.section.name,
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          item: {
-            '@id': `${globals.settings.domain}/${entry.uri}`,
-            name: entry.title,
-          },
-        },
-      ],
-    },
-    {
-      '@context': 'http://schema.org',
-      '@type': 'BlogPosting',
-      url: `${globals.settings.domain}${entry.uri}`,
-      name: entry.title,
-      headline: entry.title,
-      image: {
-        '@type': 'ImageObject',
-        // url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
-      },
-      description: entry.description,
-      author: {
-        '@type': 'Person',
-        name: `${entry.author.firstName} ${entry.author.lastName}`,
-      },
-      datePublished: new Date(entry.postDate * 1000).toISOString().split('T')[0],
-      dateModified: new Date(entry.dateUpdated * 1000).toISOString().split('T')[0],
-      publisher: {
-        '@type': 'Person',
-        name: `${entry.author.firstName} ${entry.author.lastName}`,
-      },
-      mainEntityOfPage: `${globals.settings.domain}/${entry.uri}`,
-    },
-  ];
 
   return (
     <Layout
@@ -81,11 +26,7 @@ const Blog = ({ data }) => {
           // blog-specific meta tags
           { property: 'og:type', content: 'article' },
         ]}
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(schemaOrgJSONLD)}
-        </script>
-      </Helmet>
+      />
       <article>
         <Layer>
           <header>
@@ -132,10 +73,12 @@ Blog.defaultProps = {
 
 export default Blog;
 
-export const pageQuery = graphql`
+export const BlogPostQuery = graphql`
   query BlogPost($uri: String!) {
     craft {
       entry(uri: $uri) {
+        id
+        title
         ... on craft_Blog {
           title
           subheading
