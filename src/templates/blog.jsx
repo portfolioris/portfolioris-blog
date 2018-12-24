@@ -18,13 +18,7 @@ const Blog = ({ data }) => {
     },
   } = data;
 
-  const schemaOrgJSONLD = [
-    {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      url: globals.settings.domain,
-      name: globals.settings.siteName,
-    },
+  const schema = [
     {
       '@context': 'http://schema.org',
       '@type': 'BreadcrumbList',
@@ -75,17 +69,15 @@ const Blog = ({ data }) => {
   return (
     <Layout
       entry={entry}
+      schema={schema}
     >
       <Helmet
         meta={[
           // blog-specific meta tags
           { property: 'og:type', content: 'article' },
         ]}
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(schemaOrgJSONLD)}
-        </script>
-      </Helmet>
+        schema={schema}
+      />
       <article>
         <Layer>
           <header>

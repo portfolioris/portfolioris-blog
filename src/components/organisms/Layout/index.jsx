@@ -10,6 +10,7 @@ import 'sass/leading.scss';
 const Layout = ({
   children,
   entry,
+  schema,
 }) => (
   <StaticQuery
     query={graphql`
@@ -42,14 +43,25 @@ const Layout = ({
         entries,
       } = craft;
 
-      const pageImg = {};
+      let pageImg;
       if (entry.mainImage && entry.mainImage.length) {
-        pageImg.src = `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`;
-        pageImg.alt = entry.mainImage[0].title;
+        pageImg = {
+          src: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
+          alt: entry.mainImage[0].title,
+        };
       } else {
-        pageImg.src = 'http://placehold.it/1200x630';
-        pageImg.alt = '';
+        pageImg = {
+          src: 'http://placehold.it/1200x630',
+          alt: '',
+        };
       }
+
+      schema.push({
+        '@context': 'http://schema.org',
+        '@type': 'WebSite',
+        url: settings.domain,
+        name: settings.siteName,
+      });
 
       return (
         <Fragment>
@@ -83,7 +95,11 @@ const Layout = ({
             link={[
               { rel: 'apple-touch-icon-precomposed', href: '/icons/icon-512x512.png' },
             ]}
-          />
+          >
+            <script type="application/ld+json">
+              {JSON.stringify(schema)}
+            </script>
+          </Helmet>
           <Navigation items={entries}>
             {children}
           </Navigation>
@@ -96,11 +112,13 @@ const Layout = ({
 Layout.propTypes = {
   children: PropTypes.node,
   entry: PropTypes.objectOf(PropTypes.any),
+  schema: PropTypes.objectOf(PropTypes.any),
 };
 
 Layout.defaultProps = {
   children: null,
   entry: null,
+  schema: null,
 };
 
 export default Layout;

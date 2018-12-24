@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -9,21 +9,52 @@ const ModularPage = ({ data }) => {
   const {
     craft: {
       entry,
+      globals,
     },
   } = data;
 
+  const schemaOrgJSONLD = [];
+  const breadcrumbs = [];
+
+  entry.ancestors.forEach((ancestor) => {
+    breadcrumbs.push({
+      '@type': 'ListItem',
+      position: ancestor.level,
+      item: {
+        '@id': `${globals.settings.domain}/${ancestor.uri}`,
+        name: ancestor.title,
+      },
+    });
+  });
+
+  breadcrumbs.push({
+    '@type': 'ListItem',
+    position: entry.level,
+    item: {
+      '@id': `${globals.settings.domain}/${entry.uri}`,
+      name: entry.title,
+    },
+  });
+
+  const bcSchema = {
+    '@context': 'http://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs,
+  };
+
+  schemaOrgJSONLD.push(bcSchema);
+
   return (
-    <Fragment>
-      <Layout
-        entry={entry}
-      >
-        {entry.modules.map(item => (
-          item.typeName === 'craft_ModulesBlogOverview' ? (
-            <ArticleOverview key={item.id} {...item} />
-          ) : null
-        ))}
-      </Layout>
-    </Fragment>
+    <Layout
+      entry={entry}
+      schema={schemaOrgJSONLD}
+    >
+      {entry.modules.map(item => (
+        item.typeName === 'craft_ModulesBlogOverview' ? (
+          <ArticleOverview key={item.id} {...item} />
+        ) : null
+      ))}
+    </Layout>
   );
 };
 
@@ -43,6 +74,8 @@ export const pageQuery = graphql`
       entry(uri: $uri) {
         id
         title
+        uri
+        level
         ... on craft_ModularPage {
           description
           modules {
@@ -50,10 +83,16 @@ export const pageQuery = graphql`
             ...articleOverviewFragment
           }
         }
+        ancestors {
+          title
+          level
+          uri
+        }
       }
       globals {
         settings {
           siteName
+          domain
         }
       }
     }
