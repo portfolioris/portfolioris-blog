@@ -13,8 +13,14 @@ const ModularPage = ({ data }) => {
     },
   } = data;
 
-  const schemaOrgJSONLD = [];
-  const breadcrumbs = [];
+  const breadcrumbs = [{
+    '@type': 'ListItem',
+    position: entry.level,
+    item: {
+      '@id': `${globals.settings.domain}/${entry.uri}`,
+      name: entry.title,
+    },
+  }];
 
   entry.ancestors.forEach((ancestor) => {
     breadcrumbs.push({
@@ -27,27 +33,16 @@ const ModularPage = ({ data }) => {
     });
   });
 
-  breadcrumbs.push({
-    '@type': 'ListItem',
-    position: entry.level,
-    item: {
-      '@id': `${globals.settings.domain}/${entry.uri}`,
-      name: entry.title,
-    },
-  });
-
-  const bcSchema = {
+  const schema = {
     '@context': 'http://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumbs,
   };
 
-  schemaOrgJSONLD.push(bcSchema);
-
   return (
     <Layout
       entry={entry}
-      schema={schemaOrgJSONLD}
+      schema={schema}
     >
       {entry.modules.map(item => (
         item.typeName === 'craft_ModulesBlogOverview' ? (

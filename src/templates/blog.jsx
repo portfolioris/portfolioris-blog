@@ -59,8 +59,8 @@ const Blog = ({ data }) => {
       datePublished: new Date(entry.postDate * 1000).toISOString().split('T')[0],
       dateModified: new Date(entry.dateUpdated * 1000).toISOString().split('T')[0],
       publisher: {
-        '@type': 'Person',
-        name: `${entry.author.firstName} ${entry.author.lastName}`,
+        '@type': 'Organization',
+        name: globals.settings.siteName,
       },
       mainEntityOfPage: `${globals.settings.domain}/${entry.uri}`,
     },
