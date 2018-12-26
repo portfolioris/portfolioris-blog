@@ -112,13 +112,13 @@ const Layout = ({
 Layout.propTypes = {
   children: PropTypes.node,
   entry: PropTypes.objectOf(PropTypes.any),
-  schema: PropTypes.objectOf(PropTypes.any),
+  schema: PropTypes.arrayOf(PropTypes.any),
 };
 
 Layout.defaultProps = {
   children: null,
   entry: null,
-  schema: null,
+  schema: [],
 };
 
 export default Layout;

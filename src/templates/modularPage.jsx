@@ -33,11 +33,11 @@ const ModularPage = ({ data }) => {
     });
   });
 
-  const schema = {
+  const schema = [{
     '@context': 'http://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumbs,
-  };
+  }];
 
   return (
     <Layout
