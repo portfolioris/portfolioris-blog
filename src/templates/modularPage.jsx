@@ -74,6 +74,7 @@ export const pageQuery = graphql`
         ... on craft_ModularPage {
           description
           modules {
+            __typename
             typeName: __typename
             ...articleOverviewFragment
           }

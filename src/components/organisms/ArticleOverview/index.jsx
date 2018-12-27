@@ -7,11 +7,13 @@ import Retain from 'components/atoms/objects/Retain';
 import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
 import Heading from 'components/atoms/text/Heading';
 import Theme from 'components/atoms/utilities/Theme';
+import Button from 'components/atoms/Button';
 
 const ArticleOverview = ({
   heading,
+  hideHeadingVisually,
   // latest,
-  // viewAll,
+  viewAllBlogs,
 }) => (
   <StaticQuery
     query={graphql`
@@ -34,7 +36,12 @@ const ArticleOverview = ({
         <Theme color="black">
           <Layer>
             <Retain>
-              <Heading text={heading} level={2} stylingLevel={0} />
+              <Heading
+                text={heading}
+                level={2}
+                stylingLevel={2}
+                className={hideHeadingVisually ? 'u-visually-hidden' : null}
+              />
             </Retain>
             <Retain size="breakout">
               <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
@@ -49,6 +56,18 @@ const ArticleOverview = ({
                   </li>
                 ))}
               </ul>
+              {viewAllBlogs && viewAllBlogs.entry ? (
+                <div className="o-layout  o-layout--align-center">
+                  <div className="o-layout__cell  o-layout__cell--fit">
+                    <p>
+                      <Button
+                        href={viewAllBlogs.entry.uri}
+                        text={viewAllBlogs.customText}
+                      />
+                    </p>
+                  </div>
+                </div>
+              ) : null}
             </Retain>
           </Layer>
         </Theme>
@@ -59,11 +78,13 @@ const ArticleOverview = ({
 
 ArticleOverview.propTypes = {
   heading: PropTypes.string,
-  // items: PropTypes.arrayOf(PropTypes.any),
+  hideHeadingVisually: PropTypes.bool,
+  viewAllBlogs: PropTypes.objectOf(PropTypes.any),
 };
 ArticleOverview.defaultProps = {
   heading: null,
-  // items: [],
+  hideHeadingVisually: false,
+  viewAllBlogs: null,
 };
 
 export default ArticleOverview;
@@ -72,7 +93,13 @@ export const articleOverviewFragment = graphql`
   fragment articleOverviewFragment on craft_ModulesBlogOverview {
     id
     heading
+    hideHeadingVisually
     latest
-    viewAll
+    viewAllBlogs {
+      customText
+      entry {
+        uri
+      }
+    }
   }
 `;
