@@ -40,7 +40,7 @@ class ArticleOverviewItem extends Component {
     return (
       <Theme color="white">
         <article
-          className={classNames('u-module  u-p', {
+          className={classNames('u-module  u-p  u-h-100', {
             'as-clickable': isLoaded,
           })}
           onClick={e => this.handleClick(e)}

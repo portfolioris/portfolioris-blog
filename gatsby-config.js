@@ -6,7 +6,7 @@ const pxtorem = require('postcss-pxtorem');
 
 module.exports = {
   plugins: [
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
@@ -14,33 +14,19 @@ module.exports = {
           'src/sass',
           'node_modules',
         ],
-        // postCssPlugins: [pxtorem({
-        //   propList: ['*'],
-        //   minPixelValue: 4,
-        // })],
+        postCssPlugins: [pxtorem({
+          propList: ['*'],
+          minPixelValue: 4,
+        })],
       },
     },
-    {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        typeName: 'craft',
-        fieldName: 'craft',
-        url: `${process.env.CRAFT_API_URL}`,
-        headers: {
-          authorization: `${process.env.CRAFT_API_TOKEN}`,
-        },
-        refetchInterval: 60,
-      },
-    },
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-stylelint',
       options: {
-        files: ['**/*.{scss}'],
-        syntax: 'scss',
+        files: ['**/*.scss'],
       },
     },
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -54,6 +40,19 @@ module.exports = {
       },
     },
     // 'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'craft',
+        fieldName: 'craft',
+        url: `${process.env.CRAFT_API_URL}`,
+        headers: {
+          authorization: `${process.env.CRAFT_API_TOKEN}`,
+        },
+        refetchInterval: 60,
+      },
+    },
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
