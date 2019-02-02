@@ -49,7 +49,6 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 exports.onCreateWebpackConfig = ({
-  stage,
   actions,
 }) => {
   actions.setWebpackConfig({
@@ -60,13 +59,6 @@ exports.onCreateWebpackConfig = ({
       ],
     },
   });
-  // If production JavaScript and CSS build
-  if (stage === 'build-javascript') {
-    // Turn off source maps
-    actions.setWebpackConfig({
-      devtool: false,
-    });
-  }
 };
 
 exports.onPostBootstrap = async ({ store }) => {
