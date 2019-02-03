@@ -18,6 +18,7 @@ const Blog = ({ data }) => {
     },
   } = data;
 
+  // generate JSON-JD schema
   const schema = [
     {
       '@context': 'http://schema.org',
@@ -47,10 +48,10 @@ const Blog = ({ data }) => {
       url: `${globals.settings.domain}${entry.uri}`,
       name: entry.title,
       headline: entry.title,
-      image: {
-        '@type': 'ImageObject',
-        // url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
-      },
+      // image: {
+      //   '@type': 'ImageObject',
+      //   url: `https://res.cloudinary.com/portfolioris/image/upload/q_auto,f_auto,c_scale,w_1200,h_630/${entry.mainImage[0].folder.path}${entry.mainImage[0].filename}`,
+      // },
       description: entry.description,
       author: {
         '@type': 'Person',

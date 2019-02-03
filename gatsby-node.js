@@ -1,11 +1,12 @@
 const path = require('path');
 const fs = require('fs');
-
 const { introspectionQuery, graphql } = require('gatsby/graphql');
 
+// create URLs for pages dynamically
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
+  // get uri and page type
   return graphql(`
     {
       craft {
@@ -24,18 +25,18 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors);
       }
 
-      const pages = result.data.craft.entries;
-
-      pages.forEach((entry) => {
+      // loop through entries (pages)
+      result.data.craft.entries.forEach((entry) => {
         switch (entry.section.handle) {
+          // match page types (handle) to templates
           case 'blog':
           case 'modularPage':
             createPage({
+              // in CraftCMS, the uri for the homepage is '__home__'
               path: entry.uri === '__home__' ? '/' : entry.uri,
-              component: path.resolve(
-                `src/templates/${entry.section.handle}.jsx`,
-              ),
-              // additional data can be passed via context
+              // define the component/template that should be associated with page
+              component: path.resolve(`src/templates/${entry.section.handle}.jsx`),
+              // uri is passed to template to fetch all page data
               context: {
                 uri: entry.uri,
               },
@@ -48,6 +49,7 @@ exports.createPages = ({ actions, graphql }) => {
     });
 };
 
+// create import aliases
 exports.onCreateWebpackConfig = ({
   actions,
 }) => {
@@ -61,6 +63,7 @@ exports.onCreateWebpackConfig = ({
   });
 };
 
+// create GraphQL hints file for code completion in WebStorm
 exports.onPostBootstrap = async ({ store }) => {
   const { schema } = store.getState();
   const data = await graphql(schema, introspectionQuery);
