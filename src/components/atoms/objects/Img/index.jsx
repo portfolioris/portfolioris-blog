@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'lazysizes';
-import 'lazysizes/plugins/rias/ls.rias';
+try {
+  require('lazysizes'); // eslint-disable-line global-require
+  require('lazysizes/plugins/rias/ls.rias'); // eslint-disable-line global-require
+} catch (x) {
+  // lazysizes = null;
+}
 
 const Img = ({
   image,
