@@ -33,7 +33,7 @@ exports.createPages = ({ actions, graphql }) => {
           case 'modularPage':
             createPage({
               // in CraftCMS, the uri for the homepage is '__home__'
-              path: entry.uri === '__home__' ? '/' : `${entry.uri}/`,
+              path: entry.uri === '__home__' ? '/' : entry.uri,
               // define the component/template that should be associated with page
               component: path.resolve(`src/templates/${entry.section.handle}.jsx`),
               // uri is passed to template to fetch all page data
