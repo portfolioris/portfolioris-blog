@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from 'components/organisms/Layout';
-import ArticleOverview from 'components/organisms/ArticleOverview';
+import ArticleOverviewSection from 'components/sections/ArticleOverviewSection';
 
 const ModularPage = ({ data }) => {
   const {
@@ -46,7 +46,7 @@ const ModularPage = ({ data }) => {
     >
       {entry.modules.map(item => (
         item.typeName === 'craft_ModulesBlogOverview' ? (
-          <ArticleOverview key={item.id} {...item} />
+          <ArticleOverviewSection key={item.id} {...item} />
         ) : null
       ))}
     </Layout>

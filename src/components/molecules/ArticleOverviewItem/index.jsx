@@ -69,7 +69,7 @@ ArticleOverviewItem.propTypes = {
   title: PropTypes.string,
   subheading: PropTypes.string,
   uri: PropTypes.string,
-  postDate: PropTypes.number,
+  postDate: PropTypes.string,
 };
 ArticleOverviewItem.defaultProps = {
   title: null,

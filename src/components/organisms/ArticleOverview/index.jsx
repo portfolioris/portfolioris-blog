@@ -1,37 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-
+import Theme from 'components/atoms/utilities/Theme';
 import Layer from 'components/atoms/objects/Layer';
 import Retain from 'components/atoms/objects/Retain';
-import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
 import Heading from 'components/atoms/text/Heading';
-import Theme from 'components/atoms/utilities/Theme';
+import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
 import Button from 'components/atoms/Button';
 
-const ArticleOverview = ({
-  heading,
-  hideHeadingVisually,
-  // latest,
-  viewAllBlogs,
-}) => (
-  <StaticQuery
-    query={graphql`
-      query Posts {
-        craft {
-          entries(section: [blog]) {
-            ... on craft_Blog {
-              id
-              title
-              subheading
-              uri
-              postDate
-            }
-          }
-        }
-      }
-    `}
-    render={({ craft }) => (
+class ArticleOverview extends Component {
+  componentDidMount() {
+    //
+  }
+
+  render() {
+    const {
+      heading,
+      hideHeadingVisually,
+      items,
+      viewAllBlogs,
+      tags,
+    } = this.props;
+
+    return (
       <section>
         <Theme color="black">
           <Layer>
@@ -42,10 +32,13 @@ const ArticleOverview = ({
                 stylingLevel={2}
                 className={hideHeadingVisually ? 'u-visually-hidden' : null}
               />
+              {tags.map(tag => (
+                <div>{tag.title}</div>
+              ))}
             </Retain>
             <Retain size="breakout">
               <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
-                {craft.entries.map(item => (
+                {items.map(item => (
                   <li
                     key={item.id}
                     className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
@@ -72,34 +65,23 @@ const ArticleOverview = ({
           </Layer>
         </Theme>
       </section>
-    )}
-  />
-);
+    );
+  }
+}
 
 ArticleOverview.propTypes = {
   heading: PropTypes.string,
   hideHeadingVisually: PropTypes.bool,
+  items: PropTypes.arrayOf(PropTypes.any),
+  tags: PropTypes.arrayOf(PropTypes.any),
   viewAllBlogs: PropTypes.objectOf(PropTypes.any),
 };
 ArticleOverview.defaultProps = {
   heading: null,
   hideHeadingVisually: false,
+  items: null,
+  tags: null,
   viewAllBlogs: null,
 };
 
 export default ArticleOverview;
-
-export const articleOverviewFragment = graphql`
-  fragment articleOverviewFragment on craft_ModulesBlogOverview {
-    id
-    heading
-    hideHeadingVisually
-    latest
-    viewAllBlogs {
-      customText
-      entry {
-        uri
-      }
-    }
-  }
-`;

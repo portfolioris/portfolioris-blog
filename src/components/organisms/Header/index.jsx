@@ -25,31 +25,20 @@ const Header = ({
         size="full"
       >
         <div className="c-header">
-          <div className="o-layout  o-layout--align-middle">
-            <div className="o-layout__cell  o-layout__cell--fill">
-              <div className="o-layout  o-layout--align-middle">
-                <div className="o-layout__cell  o-layout__cell--fit">
-                  <Link
-                    to="/"
-                    href="/"
-                  >
-                    <img src={logo} alt="Portfolioris" className="c-header__logo" />
-                    <span className="u-visually-hidden">Portfolioris</span>
-                  </Link>
-                </div>
-                <div className="o-layout__cell  o-layout__cell--fit  o-layout__cell--center">
-                  <div className="u-hidden@until-desk">
-                    <PrimaryNav items={items} activePageId={activePageId} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="o-layout__cell  o-layout__cell--fit  u-hidden@from-desk">
-              <MenuToggle
-                handleToggleMenu={handleToggleMenu}
-                isOpen={menuIsOpen}
-              />
-            </div>
+          <div>
+            <Link to="/">
+              <img src={logo} alt="Portfolioris" className="c-header__logo" />
+            </Link>
+          </div>
+
+          <div className="u-hidden@until-desk">
+            <PrimaryNav items={items} activePageId={activePageId} />
+          </div>
+          <div className="u-hidden@from-desk">
+            <MenuToggle
+              handleToggleMenu={handleToggleMenu}
+              isOpen={menuIsOpen}
+            />
           </div>
         </div>
       </Retain>
