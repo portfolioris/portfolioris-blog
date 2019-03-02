@@ -6,6 +6,7 @@ import Retain from 'components/atoms/objects/Retain';
 import Heading from 'components/atoms/text/Heading';
 import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
 import Button from 'components/atoms/Button';
+import TagFilter from 'components/molecules/TagFilter';
 
 class ArticleOverview extends Component {
   componentDidMount() {
@@ -32,9 +33,9 @@ class ArticleOverview extends Component {
                 stylingLevel={2}
                 className={hideHeadingVisually ? 'u-visually-hidden' : null}
               />
-              {tags.map(tag => (
-                <div>{tag.title}</div>
-              ))}
+              <TagFilter
+                tags={tags}
+              />
             </Retain>
             <Retain size="breakout">
               <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
