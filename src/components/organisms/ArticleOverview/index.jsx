@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Theme from 'components/atoms/utilities/Theme';
 import Layer from 'components/atoms/objects/Layer';
@@ -8,67 +8,83 @@ import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
 import Button from 'components/atoms/Button';
 import TagFilter from 'components/molecules/TagFilter';
 
-class ArticleOverview extends Component {
-  componentDidMount() {
-    //
+const ArticleOverview = ({
+  heading,
+  hideHeadingVisually,
+  items,
+  viewAllBlogs,
+  tags,
+}) => {
+  const [activeTags, setActiveTags] = useState([]);
+
+  const handleClickTag = (slug) => {
+    let newTags = activeTags;
+    if (activeTags.indexOf(slug) > -1) {
+      newTags = activeTags.filter(value => value !== slug);
+    } else {
+      newTags = activeTags.concat([slug]);
+    }
+    setActiveTags([...newTags]);
+  };
+
+  let activeItems = items;
+
+  if (activeTags.length) {
+    activeItems = items.filter(item => (
+      item.tags.some(tag => (
+        activeTags.indexOf(tag.slug) > -1
+      ))
+    ));
   }
 
-  render() {
-    const {
-      heading,
-      hideHeadingVisually,
-      items,
-      viewAllBlogs,
-      tags,
-    } = this.props;
-
-    return (
-      <section>
-        <Theme color="black">
-          <Layer>
-            <Retain>
-              <Heading
-                text={heading}
-                level={2}
-                stylingLevel={2}
-                className={hideHeadingVisually ? 'u-visually-hidden' : null}
-              />
-              <TagFilter
-                tags={tags}
-              />
-            </Retain>
-            <Retain size="breakout">
-              <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
-                {items.map(item => (
-                  <li
-                    key={item.id}
-                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
-                  >
-                    <ArticleOverviewItem
-                      {...item}
+  return (
+    <section>
+      <Theme color="black">
+        <Layer>
+          <Retain>
+            <Heading
+              text={heading}
+              level={2}
+              stylingLevel={2}
+              className={hideHeadingVisually ? 'u-visually-hidden' : null}
+            />
+            <TagFilter
+              handleClickTag={handleClickTag}
+              tags={tags}
+              activeTags={activeTags}
+            />
+          </Retain>
+          <Retain size="breakout">
+            <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
+              {activeItems.map(item => (
+                <li
+                  key={item.id}
+                  className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
+                >
+                  <ArticleOverviewItem
+                    {...item}
+                  />
+                </li>
+              ))}
+            </ul>
+            {viewAllBlogs && viewAllBlogs.entry ? (
+              <div className="o-layout  o-layout--align-center">
+                <div className="o-layout__cell  o-layout__cell--fit">
+                  <p>
+                    <Button
+                      href={viewAllBlogs.entry.uri}
+                      text={viewAllBlogs.customText}
                     />
-                  </li>
-                ))}
-              </ul>
-              {viewAllBlogs && viewAllBlogs.entry ? (
-                <div className="o-layout  o-layout--align-center">
-                  <div className="o-layout__cell  o-layout__cell--fit">
-                    <p>
-                      <Button
-                        href={viewAllBlogs.entry.uri}
-                        text={viewAllBlogs.customText}
-                      />
-                    </p>
-                  </div>
+                  </p>
                 </div>
-              ) : null}
-            </Retain>
-          </Layer>
-        </Theme>
-      </section>
-    );
-  }
-}
+              </div>
+            ) : null}
+          </Retain>
+        </Layer>
+      </Theme>
+    </section>
+  );
+};
 
 ArticleOverview.propTypes = {
   heading: PropTypes.string,

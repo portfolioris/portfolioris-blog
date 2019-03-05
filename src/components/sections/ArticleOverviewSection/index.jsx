@@ -14,6 +14,10 @@ const ArticleOverviewSection = (props) => {
             subheading
             uri
             postDate
+            tags {
+              slug
+              title
+            }
           }
         }
         tags {
