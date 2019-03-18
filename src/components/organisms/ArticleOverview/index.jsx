@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Theme from 'components/atoms/utilities/Theme';
 import Layer from 'components/atoms/objects/Layer';
@@ -15,20 +15,33 @@ const ArticleOverview = ({
   viewAllBlogs,
   tags,
 }) => {
+  const $container = React.useRef(null);
   const [activeTags, setActiveTags] = useState([]);
 
   const handleClickTag = (slug) => {
-    let newTags = activeTags;
+    // const $items = $container.current.querySelectorAll('.js--articles__item');
+    // console.log($items);
+
+
+    // is a filter removed?
     if (activeTags.indexOf(slug) > -1) {
-      newTags = activeTags.filter(value => value !== slug);
+      // filter it out
+      setActiveTags(activeTags.filter(value => value !== slug));
     } else {
-      newTags = activeTags.concat([slug]);
+      // add it
+      setActiveTags([...activeTags, slug]);
     }
-    setActiveTags([...newTags]);
   };
 
+  useEffect(() => {
+    // document.title = `You clicked ${count} times`;
+    console.log(activeTags);
+  });
+
+  // all items
   let activeItems = items;
 
+  // if filters are set, filter out some items
   if (activeTags.length) {
     activeItems = items.filter(item => (
       item.tags.some(tag => (
@@ -55,18 +68,22 @@ const ArticleOverview = ({
             />
           </Retain>
           <Retain size="breakout">
-            <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
-              {activeItems.map(item => (
-                <li
-                  key={item.id}
-                  className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
-                >
-                  <ArticleOverviewItem
-                    {...item}
-                  />
-                </li>
-              ))}
-            </ul>
+
+            <div className="c-articles" ref={$container}>
+              <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
+                {activeItems.map(item => (
+                  <li
+                    key={item.id}
+                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
+                  >
+                    <ArticleOverviewItem
+                      className="c-articles__item  js--articles__item"
+                      {...item}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
             {viewAllBlogs && viewAllBlogs.entry ? (
               <div className="o-layout  o-layout--align-center">
                 <div className="o-layout__cell  o-layout__cell--fit">
