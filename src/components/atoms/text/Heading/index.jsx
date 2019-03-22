@@ -35,8 +35,8 @@ const Heading = ({
       href ? Link : 'span',
       {
         to: href || null,
-        dangerouslySetInnerHTML: { __html: text },
       },
+      text,
     ),
   );
 };

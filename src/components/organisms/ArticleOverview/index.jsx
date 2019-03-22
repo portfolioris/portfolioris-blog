@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Theme from 'components/atoms/utilities/Theme';
 import Layer from 'components/atoms/objects/Layer';
@@ -15,13 +15,19 @@ const ArticleOverview = ({
   viewAllBlogs,
   tags,
 }) => {
-  const $container = React.useRef(null);
+  // all items
+  let activeItems = items;
+  const $container = useRef(null);
   const [activeTags, setActiveTags] = useState([]);
 
   const handleClickTag = (slug) => {
     // const $items = $container.current.querySelectorAll('.js--articles__item');
     // console.log($items);
-
+    // [...$items].forEach(($item) => {
+    //   // const dims = $item.getBoundingClientRect();
+    //   console.log('domel', $item/* .getBoundingClientRect() */);
+    // });
+    // console.log(activeItems);
 
     // is a filter removed?
     if (activeTags.indexOf(slug) > -1) {
@@ -34,12 +40,16 @@ const ArticleOverview = ({
   };
 
   useEffect(() => {
-    // document.title = `You clicked ${count} times`;
-    console.log(activeTags);
+    const $items = $container.current.querySelectorAll('.js--articles__item');
+    console.log($items);
+    $items.forEach(($item) => {
+      const dims = $item.getBoundingClientRect();
+      console.log(dims);
+    });
+    console.log('ai', activeItems);
+    // const $items = $container.current.querySelectorAll('.js--articles__item');
   });
 
-  // all items
-  let activeItems = items;
 
   // if filters are set, filter out some items
   if (activeTags.length) {
