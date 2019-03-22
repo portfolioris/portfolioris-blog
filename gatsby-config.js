@@ -11,7 +11,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        // implementation: sass,
+        implementation: sass,
         includePaths: [
           'src/sass',
           'node_modules',
