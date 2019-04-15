@@ -1,0 +1,9 @@
+.c-articles__item {
+  &.is-active {
+    background-color: #7dff00;
+  }
+
+  &[hidden] {
+    display: none !important;
+  }
+}

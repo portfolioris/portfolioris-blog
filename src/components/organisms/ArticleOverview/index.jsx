@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Theme from 'components/atoms/utilities/Theme';
 import Layer from 'components/atoms/objects/Layer';
@@ -8,6 +8,8 @@ import ArticleOverviewItem from 'components/molecules/ArticleOverviewItem';
 import Button from 'components/atoms/Button';
 import TagFilter from 'components/molecules/TagFilter';
 
+import './ArticleOverview.scss';
+
 const ArticleOverview = ({
   heading,
   hideHeadingVisually,
@@ -15,22 +17,12 @@ const ArticleOverview = ({
   viewAllBlogs,
   tags,
 }) => {
-  // all items
-  let activeItems = items;
   const $container = useRef(null);
   const [activeTags, setActiveTags] = useState([]);
 
   const handleClickTag = (slug) => {
-    // const $items = $container.current.querySelectorAll('.js--articles__item');
-    // console.log($items);
-    // [...$items].forEach(($item) => {
-    //   // const dims = $item.getBoundingClientRect();
-    //   console.log('domel', $item/* .getBoundingClientRect() */);
-    // });
-    // console.log(activeItems);
-
     // is a filter removed?
-    if (activeTags.indexOf(slug) > -1) {
+    if (activeTags.contains(slug)) {
       // filter it out
       setActiveTags(activeTags.filter(value => value !== slug));
     } else {
@@ -39,26 +31,31 @@ const ArticleOverview = ({
     }
   };
 
-  useEffect(() => {
-    const $items = $container.current.querySelectorAll('.js--articles__item');
-    console.log($items);
-    $items.forEach(($item) => {
-      const dims = $item.getBoundingClientRect();
-      console.log(dims);
-    });
-    console.log('ai', activeItems);
-    // const $items = $container.current.querySelectorAll('.js--articles__item');
-  });
-
-
-  // if filters are set, filter out some items
-  if (activeTags.length) {
-    activeItems = items.filter(item => (
-      item.tags.some(tag => (
-        activeTags.indexOf(tag.slug) > -1
-      ))
-    ));
-  }
+  // useEffect(() => {
+  //   const activeItemIds = items.reduce((ids, item) => {
+  //     if (item.tags.some(tag => (
+  //       activeTags.includes(tag.slug)
+  //       // activeTags.indexOf(tag.slug) > -1
+  //     ))) {
+  //       return ids.push(item.id);
+  //     }
+  //     return ids;
+  //   }, []);
+  //
+  //   const $items = $container.current.querySelectorAll('.js--articles__item');
+  //
+  //   $items.forEach(($item) => {
+  //     if (activeItemIds.includes(parseFloat($item.dataset.itemId))) {
+  //       $item.classList.add('is-active');
+  //       $item.removeAttribute('hidden');
+  //     } else {
+  //       $item.setAttribute('hidden', '');
+  //       $item.classList.remove('is-active');
+  //     }
+  //     const dims = $item.getBoundingClientRect();
+  //     console.log(dims);
+  //   });
+  // });
 
   return (
     <section>
@@ -81,13 +78,13 @@ const ArticleOverview = ({
 
             <div className="c-articles" ref={$container}>
               <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
-                {activeItems.map(item => (
+                {items.map(item => (
                   <li
                     key={item.id}
-                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
+                    data-item-id={item.id}
+                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk  js--articles__item  c-articles__item"
                   >
                     <ArticleOverviewItem
-                      className="c-articles__item  js--articles__item"
                       {...item}
                     />
                   </li>
