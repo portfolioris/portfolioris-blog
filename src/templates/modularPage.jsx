@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 
 import Layout from 'components/organisms/Layout';
 import ArticleOverview from 'components/organisms/ArticleOverview';
+import RichText from 'components/organisms/RichText';
 
 const ModularPage = ({ data }) => {
   const {
@@ -45,9 +46,17 @@ const ModularPage = ({ data }) => {
       schema={schema}
     >
       {entry.modules.map(item => (
-        item.typeName === 'craft_ModulesBlogOverview' ? (
-          <ArticleOverview key={item.id} {...item} />
-        ) : null
+        <>
+          {item.typeName === 'craft_ModulesBlogOverview' ? (
+            <ArticleOverview key={item.id} {...item} />
+          ) : null}
+
+          {item.typeName === 'craft_ModulesRichTextBlock' ? (
+            <RichText key={item.id} {...item} />
+          ) : null}
+        </>
+
+
       ))}
     </Layout>
   );
@@ -76,6 +85,10 @@ export const pageQuery = graphql`
           modules {
             typeName: __typename
             ...articleOverviewFragment
+            ... on craft_ModulesRichTextBlock {
+              id
+              richText
+            }
           }
         }
         ancestors {

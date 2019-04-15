@@ -48,7 +48,7 @@ const ArticleOverview = ({
                 {craft.entries.map(item => (
                   <li
                     key={item.id}
-                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk"
+                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk  u-m-b"
                   >
                     <ArticleOverviewItem
                       {...item}
