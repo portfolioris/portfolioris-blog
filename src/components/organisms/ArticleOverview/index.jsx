@@ -13,6 +13,7 @@ import './ArticleOverview.scss';
 const ArticleOverview = ({
   heading,
   hideHeadingVisually,
+  latest,
   items,
   viewAllBlogs,
   tags,
@@ -116,6 +117,7 @@ ArticleOverview.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any),
   tags: PropTypes.arrayOf(PropTypes.any),
   viewAllBlogs: PropTypes.objectOf(PropTypes.any),
+  latest: PropTypes.number,
 };
 ArticleOverview.defaultProps = {
   heading: null,
@@ -123,6 +125,7 @@ ArticleOverview.defaultProps = {
   items: null,
   tags: null,
   viewAllBlogs: null,
+  latest: null,
 };
 
 export default ArticleOverview;

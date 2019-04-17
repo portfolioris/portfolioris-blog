@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from 'components/organisms/Layout';
+import RichText from 'components/organisms/RichText';
 import ArticleOverviewSection from 'components/sections/ArticleOverviewSection';
 
 const ModularPage = ({ data }) => {
@@ -45,9 +46,15 @@ const ModularPage = ({ data }) => {
       schema={schema}
     >
       {entry.modules.map(item => (
-        item.typeName === 'craft_ModulesBlogOverview' ? (
-          <ArticleOverviewSection key={item.id} {...item} />
-        ) : null
+        <>
+          {item.typeName === 'craft_ModulesBlogOverview' ? (
+            <ArticleOverviewSection key={item.id} {...item} />
+          ) : null}
+
+          {item.typeName === 'craft_ModulesRichTextBlock' ? (
+            <RichText key={item.id} {...item} />
+          ) : null}
+        </>
       ))}
     </Layout>
   );
@@ -76,6 +83,7 @@ export const pageQuery = graphql`
           modules {
             typeName: __typename
             ...articleOverviewFragment
+            ...richTextFragment
           }
         }
         ancestors {

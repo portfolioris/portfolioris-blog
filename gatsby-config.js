@@ -3,6 +3,7 @@ require('dotenv').config({
 });
 
 const pxtorem = require('postcss-pxtorem');
+const postcssNormalize = require('postcss-normalize');
 const sass = require('sass');
 
 module.exports = {
@@ -16,10 +17,13 @@ module.exports = {
           'src/sass',
           'node_modules',
         ],
-        postCssPlugins: [pxtorem({
-          propList: ['*'],
-          minPixelValue: 4,
-        })],
+        postCssPlugins: [
+          pxtorem({
+            propList: ['*'],
+            minPixelValue: 4,
+          }),
+          postcssNormalize(),
+        ],
       },
     },
     {
