@@ -12,7 +12,7 @@ import Button from 'components/atoms/Button';
 const ArticleOverview = ({
   heading,
   hideHeadingVisually,
-  // latest,
+  latest,
   viewAllBlogs,
 }) => (
   <StaticQuery
@@ -31,48 +31,56 @@ const ArticleOverview = ({
         }
       }
     `}
-    render={({ craft }) => (
-      <section>
-        <Theme color="black">
-          <Layer>
-            <Retain>
-              <Heading
-                text={heading}
-                level={2}
-                stylingLevel={2}
-                className={hideHeadingVisually ? 'u-visually-hidden' : null}
-              />
-            </Retain>
-            <Retain size="breakout">
-              <ul className="o-layout  o-layout--gutter  o-layout--equalheight">
-                {craft.entries.map(item => (
-                  <li
-                    key={item.id}
-                    className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk  u-m-b"
-                  >
-                    <ArticleOverviewItem
-                      {...item}
-                    />
-                  </li>
-                ))}
-              </ul>
-              {viewAllBlogs && viewAllBlogs.entry ? (
-                <div className="o-layout  o-layout--align-center">
-                  <div className="o-layout__cell  o-layout__cell--fit">
-                    <p>
-                      <Button
-                        href={viewAllBlogs.entry.uri}
-                        text={viewAllBlogs.customText}
+    render={({ craft }) => {
+      let showEntries = craft.entries;
+
+      if (latest) {
+        showEntries = craft.entries.slice(0, 3);
+      }
+      return (
+        <section>
+          <Theme color="black">
+            <Layer>
+              <Retain>
+                <Heading
+                  text={heading}
+                  level={2}
+                  stylingLevel={2}
+                  className={hideHeadingVisually ? 'u-visually-hidden' : null}
+                />
+              </Retain>
+              <Retain size="breakout">
+                <ul className="o-layout  o-layout--gutter  o-layout--equalheight  u-m-b-none">
+                  {showEntries.map(item => (
+                    <li
+                      key={item.id}
+                      className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk  u-m-b"
+                    >
+                      <ArticleOverviewItem
+                        {...item}
                       />
-                    </p>
+                    </li>
+                  ))}
+                </ul>
+                {viewAllBlogs && viewAllBlogs.entry ? (
+                  <div className="o-layout  o-layout--align-center">
+                    <div className="o-layout__cell  o-layout__cell--fit">
+                      <p>
+                        <Button
+                          href={viewAllBlogs.entry.uri}
+                          text={viewAllBlogs.customText}
+                        />
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ) : null}
-            </Retain>
-          </Layer>
-        </Theme>
-      </section>
-    )}
+                ) : null}
+              </Retain>
+            </Layer>
+          </Theme>
+        </section>
+      );
+    }
+      }
   />
 );
 
@@ -80,11 +88,13 @@ ArticleOverview.propTypes = {
   heading: PropTypes.string,
   hideHeadingVisually: PropTypes.bool,
   viewAllBlogs: PropTypes.objectOf(PropTypes.any),
+  latest: PropTypes.number,
 };
 ArticleOverview.defaultProps = {
   heading: null,
   hideHeadingVisually: false,
   viewAllBlogs: null,
+  latest: null,
 };
 
 export default ArticleOverview;

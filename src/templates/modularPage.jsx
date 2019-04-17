@@ -85,10 +85,7 @@ export const pageQuery = graphql`
           modules {
             typeName: __typename
             ...articleOverviewFragment
-            ... on craft_ModulesRichTextBlock {
-              id
-              richText
-            }
+            ...richTextFragment
           }
         }
         ancestors {
