@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -46,15 +46,15 @@ const ModularPage = ({ data }) => {
       schema={schema}
     >
       {entry.modules.map(item => (
-        <>
+        <Fragment key={item.id}>
           {item.typeName === 'craft_ModulesBlogOverview' ? (
-            <ArticleOverviewSection key={item.id} {...item} />
+            <ArticleOverviewSection {...item} />
           ) : null}
 
           {item.typeName === 'craft_ModulesRichTextBlock' ? (
-            <RichText key={item.id} {...item} />
+            <RichText {...item} />
           ) : null}
-        </>
+        </Fragment>
       ))}
     </Layout>
   );

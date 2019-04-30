@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Theme from 'components/atoms/utilities/Theme';
 import Layer from 'components/atoms/objects/Layer';
@@ -13,7 +13,7 @@ import './ArticleOverview.scss';
 const ArticleOverview = ({
   heading,
   hideHeadingVisually,
-  latest,
+  // latest,
   items,
   viewAllBlogs,
   tags,
@@ -23,7 +23,7 @@ const ArticleOverview = ({
 
   const handleClickTag = (slug) => {
     // is a filter removed?
-    if (activeTags.contains(slug)) {
+    if (activeTags.includes(slug)) {
       // filter it out
       setActiveTags(activeTags.filter(value => value !== slug));
     } else {
@@ -32,31 +32,36 @@ const ArticleOverview = ({
     }
   };
 
-  // useEffect(() => {
-  //   const activeItemIds = items.reduce((ids, item) => {
-  //     if (item.tags.some(tag => (
-  //       activeTags.includes(tag.slug)
-  //       // activeTags.indexOf(tag.slug) > -1
-  //     ))) {
-  //       return ids.push(item.id);
-  //     }
-  //     return ids;
-  //   }, []);
-  //
-  //   const $items = $container.current.querySelectorAll('.js--articles__item');
-  //
-  //   $items.forEach(($item) => {
-  //     if (activeItemIds.includes(parseFloat($item.dataset.itemId))) {
-  //       $item.classList.add('is-active');
-  //       $item.removeAttribute('hidden');
-  //     } else {
-  //       $item.setAttribute('hidden', '');
-  //       $item.classList.remove('is-active');
-  //     }
-  //     const dims = $item.getBoundingClientRect();
-  //     console.log(dims);
-  //   });
-  // });
+  useEffect(() => {
+    const activeItems = items.filter(item => (
+      (item.tags.some(tag => activeTags.includes(tag.slug)))
+    ));
+
+    console.log(activeItems);
+    // const activeItemIds = items.reduce((ids, item) => {
+    //   if (item.tags.some(tag => (
+    //     activeTags.includes(tag.slug)
+    //     // activeTags.indexOf(tag.slug) > -1
+    //   ))) {
+    //     return ids.push(item.id);
+    //   }
+    //   return ids;
+    // }, []);
+
+    // const $items = $container.current.querySelectorAll('.js--articles__item');
+    //
+    // $items.forEach(($item) => {
+    //   if (activeItemIds.includes(parseFloat($item.dataset.itemId))) {
+    //     $item.classList.add('is-active');
+    //     $item.removeAttribute('hidden');
+    //   } else {
+    //     $item.setAttribute('hidden', '');
+    //     $item.classList.remove('is-active');
+    //   }
+    //   const dims = $item.getBoundingClientRect();
+    //   console.log(dims);
+    // });
+  });
 
   return (
     <section>
@@ -117,7 +122,7 @@ ArticleOverview.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any),
   tags: PropTypes.arrayOf(PropTypes.any),
   viewAllBlogs: PropTypes.objectOf(PropTypes.any),
-  latest: PropTypes.number,
+  // latest: PropTypes.number,
 };
 ArticleOverview.defaultProps = {
   heading: null,
@@ -125,7 +130,7 @@ ArticleOverview.defaultProps = {
   items: null,
   tags: null,
   viewAllBlogs: null,
-  latest: null,
+  // latest: null,
 };
 
 export default ArticleOverview;
