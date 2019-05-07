@@ -82,5 +82,13 @@ module.exports = {
         // rules for client only paths
       },
     },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '2',
+        matomoUrl: 'https://portfolioris.nl/analytics',
+        siteUrl: 'https://beta.portfolioris.nl',
+      },
+    },
   ],
 };
