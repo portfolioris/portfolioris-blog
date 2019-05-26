@@ -9,6 +9,7 @@ import Retain from 'components/atoms/objects/Retain';
 import Text from 'components/atoms/text/Text';
 import Heading from 'components/atoms/text/Heading';
 import DateString from 'components/atoms/text/DateString';
+import Theme from 'components/atoms/utilities/Theme';
 
 const Blog = ({ data }) => {
   const {
@@ -77,39 +78,41 @@ const Blog = ({ data }) => {
           // blog-specific meta tags
           { property: 'og:type', content: 'article' },
         ]}
-        schema={schema}
       />
       <article>
-        <Layer>
-          <header>
+        <Theme color="black">
+          <Layer>
+            <header>
+              <Retain size="narrow">
+                <Heading
+                  text={entry.title}
+                  level={1}
+                  stylingLevel={0}
+                  className="u-m-b-none"
+                />
+                <Text
+                  text={entry.subheading}
+                  type="md"
+                  modifier="intro"
+                  className="u-m-b-none"
+                />
+                <p className="u-micro">
+                  {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
+                  <DateString dateString={entry.postDate} />
+                </p>
+              </Retain>
+            </header>
+          </Layer>
+          <Layer collapseTop>
             <Retain size="narrow">
-              <Heading
-                text={entry.title}
-                level={1}
-                stylingLevel={0}
-                className="u-m-b-none"
-              />
               <Text
-                text={entry.subheading}
+                text={entry.richText}
                 type="md"
-                modifier="intro"
-                className="u-m-b-none"
               />
-              <p className="u-micro">
-                {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
-                <DateString dateString={entry.postDate} />
-              </p>
             </Retain>
-          </header>
-        </Layer>
-        <Layer collapseTop>
-          <Retain size="narrow">
-            <Text
-              text={entry.richText}
-              type="md"
-            />
-          </Retain>
-        </Layer>
+          </Layer>
+        </Theme>
+
       </article>
     </Layout>
   );

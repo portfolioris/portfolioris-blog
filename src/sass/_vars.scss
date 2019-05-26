@@ -74,7 +74,8 @@ $green: #7dff00;
 
 
 // Grayscale
-$black: #1a1918 !default;
+//$black: #1a1918 !default;
+$black: #000 !default;
 $white: #fff !default;
 $gray-light: #f1f1f1 !default;
 $gray-medium: #ccc !default;
@@ -85,13 +86,13 @@ $gray-dark: #767676 !default;
 /*  Sizes
     ========================================================================= */
 
-$inuit-font-size-h0: 64px !default;
-$inuit-font-size-h1: 34px !default;
-$inuit-font-size-h2: 28px !default;
-$inuit-font-size-h3: 24px !default;
-$inuit-font-size-h4: 20px !default;
-$inuit-font-size-h5: 18px !default;
-$inuit-font-size-h6: 16px !default;
+$alpha: 64px !default;
+$beta: 34px !default;
+$gamma: 28px !default;
+$delta: 24px !default;
+$epsilon: 20px !default;
+$foxtrot: 18px !default;
+$normalis: 16px !default;
 $milli: 14px;
 $micro: 12px;
 
