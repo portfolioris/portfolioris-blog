@@ -8,6 +8,7 @@ const sass = require('sass');
 
 module.exports = {
   plugins: [
+    'gatsby-plugin-preact',
     'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-sass',
