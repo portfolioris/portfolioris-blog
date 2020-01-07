@@ -51,14 +51,13 @@ const ArticleOverview = ({
               </Retain>
               <Retain size="breakout">
                 <ul className="o-layout  o-layout--gutter  o-layout--equalheight  u-m-b-none">
-                  {showEntries.map(item => (
+                  {showEntries.map((item) => (
                     <li
                       key={item.id}
                       className="o-layout__cell   u-fraction--1/2@from-lap  u-fraction--1/3@from-desk  u-m-b"
                     >
-                      <ArticleOverviewItem
-                        {...item}
-                      />
+                      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                      <ArticleOverviewItem {...item} />
                     </li>
                   ))}
                 </ul>
@@ -79,8 +78,7 @@ const ArticleOverview = ({
           </Theme>
         </section>
       );
-    }
-      }
+    }}
   />
 );
 

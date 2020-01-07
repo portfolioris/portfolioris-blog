@@ -28,7 +28,7 @@ class Navigation extends Component {
 
   handleToggleMenu(e) {
     e.preventDefault();
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       menuIsOpen: !prevState.menuIsOpen,
     }));
   }
@@ -80,7 +80,7 @@ class Navigation extends Component {
         >
           <Retain>
             <ul className="o-list-bare">
-              {items.map(item => (
+              {items.map((item) => (
                 <li
                   key={item.id}
                   className="u-m-b-tiny"

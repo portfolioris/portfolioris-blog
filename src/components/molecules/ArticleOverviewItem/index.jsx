@@ -43,7 +43,7 @@ class ArticleOverviewItem extends Component {
           className={classNames('u-module  u-p  u-h-100', {
             'as-clickable': isLoaded,
           })}
-          onClick={e => this.handleClick(e)}
+          onClick={(e) => this.handleClick(e)}
           role="presentation"
         >
           <Heading

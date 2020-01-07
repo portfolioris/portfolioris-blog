@@ -45,13 +45,15 @@ const ModularPage = ({ data }) => {
       entry={entry}
       schema={schema}
     >
-      {entry.modules.map(item => (
+      {entry.modules.map((item) => (
         <>
           {item.typeName === 'craft_ModulesBlogOverview' ? (
+            // eslint-disable-next-line react/jsx-props-no-spreading
             <ArticleOverview key={item.id} {...item} />
           ) : null}
 
           {item.typeName === 'craft_ModulesRichTextBlock' ? (
+            // eslint-disable-next-line react/jsx-props-no-spreading
             <RichText key={item.id} {...item} />
           ) : null}
         </>

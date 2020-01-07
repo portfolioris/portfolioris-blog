@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ParagraphBlock = ({ children }) => {
   const hasImage = !!children.find(
-    child => typeof child === 'object' && child.key && !!child.key.match(/image/g),
+    (child) => typeof child === 'object' && child.key && !!child.key.match(/image/g),
   );
   return hasImage ? children : <p>{children}</p>;
 };

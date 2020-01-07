@@ -8,7 +8,7 @@ const PrimaryNav = ({
 }) => (
   <nav>
     <ul className="o-layout  o-layout--gutter-small  o-layout--inline  u-m-b-none">
-      {items.map(item => (
+      {items.map((item) => (
         <li
           key={item.id}
           className="o-layout__cell  o-layout__cell--fit"

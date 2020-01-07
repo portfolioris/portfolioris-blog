@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Img from 'components/atoms/objects/Img';
 
-const ImageBlock = props => (
+const ImageBlock = (props) => (
   <StaticQuery
     query={graphql`
       query Images {
@@ -27,7 +27,7 @@ const ImageBlock = props => (
           .replace('}', ''),
         10,
       );
-      const ImgObj = craft.assets.find(asset => asset.id === imgId);
+      const ImgObj = craft.assets.find((asset) => asset.id === imgId);
       return (
         <figure className="c-text__figure  u-m-b">
           <Img
