@@ -97,7 +97,7 @@ const Blog = ({ data }) => {
                   className="u-m-b-none"
                 />
                 <p className="u-micro">
-                  {`Geplaatst door ${entry.author.firstName} ${entry.author.lastName}, `}
+                  {`Added by ${entry.author.firstName} ${entry.author.lastName}, `}
                   <DateString dateString={entry.postDate} />
                 </p>
               </Retain>
