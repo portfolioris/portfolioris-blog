@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript';
 import css from 'react-syntax-highlighter/dist/cjs/languages/hljs/css';
+import xml from 'react-syntax-highlighter/dist/cjs/languages/hljs/xml';
 import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/default-style';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('css', css);
+SyntaxHighlighter.registerLanguage('xml', xml);
 
 const CodeBlock = ({
   language,
